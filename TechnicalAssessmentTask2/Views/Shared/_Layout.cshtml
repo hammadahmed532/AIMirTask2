@@ -5,79 +5,166 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Engagement Survey Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/TechnicalAssessmentTask2.styles.css" asp-append-version="true" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    @*  <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Login">TechnicalAssessmentTask2</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Login">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
- *@
-
-    <header class="app-header d-flex justify-content-between align-items-center">
-        <div class="brand">
-            CULTURE<span>TELLIGENCE</span>
+    <!-- Page Loader Overlay -->
+    <div id="pageLoader" class="page-loader-overlay" style="display: flex;">
+        <div class="loader-container">
+            <img src="~/images/loader.gif" alt="Loading..." class="loader-gif" />
         </div>
+    </div>
 
-        <ul class="nav">
-            <li class="nav-item">
-                <a class="nav-link nav-pill active" href="#">Executive Summary</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link nav-pill" href="#">Heatmap View</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link nav-pill" asp-area="" asp-controller="Dashboard" asp-action="CommentsReport">Comments Report</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link nav-pill" href="#">Priority Matrix</a>
-            </li>
-        </ul>
-
-        <div class="d-flex align-items-center gap-3">
-            <span class="fw-medium">Innovate Co</span>
-            <i class="bi bi-person-circle fs-4"></i>
+    <header class="app-header">
+        <!-- Top Row: Brand and User Info -->
+        <div class="header-top-row d-flex justify-content-between align-items-center">
+            <div class="brand">
+                CULTURE<span>TELLIGENCE</span>
+            </div>
+            <div class="d-flex align-items-center gap-3">
+                <span class="fw-medium small">@ViewBag.UserEmail</span>
+                <a href="@Url.Action("Logout", "Home")" class="btn btn-sm btn-outline-danger">
+                    <i class="bi bi-box-arrow-right"></i> Logout
+                </a>
+            </div>
+        </div>
+        
+        <!-- Bottom Row: Navigation Menu -->
+        <div class="header-nav-row">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link nav-pill" asp-controller="Dashboard" asp-action="HeatMap" id="nav-heatmap"><i class="fas fa-th"></i> Heatmap View</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-pill" asp-controller="Dashboard" asp-action="CommentsReport" id="nav-comments"><i class="fas fa-list"></i> Comments Report</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-pill" asp-controller="Dashboard" asp-action="PriorityMatrix" id="nav-priority"><i class="fas fa-border-all"></i> Priority Matrix</a>
+                </li>
+            </ul>
         </div>
     </header>
    
 
-    <div class="container">
+    <div class="container-fluid px-0">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2026 - Engagement Survey Dashboard - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
+     
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        // Function to hide loader (with debounce to prevent multiple calls)
+        var loaderHidden = false;
+        function hideLoader() {
+            if (loaderHidden) return;
+            var loader = $('#pageLoader');
+            if (loader.is(':visible')) {
+                loader.fadeOut(200, function() {
+                    loaderHidden = true;
+                });
+            } else {
+                loaderHidden = true;
+            }
+        }
+
+        // Hide loader with multiple fallback methods
+        $(document).ready(function() {
+            var currentAction = '@ViewContext.RouteData.Values["action"]';
+            var currentController = '@ViewContext.RouteData.Values["controller"]';
+            
+            if (currentController === 'Dashboard') {
+                $('.nav-pill').removeClass('active');
+                if (currentAction === 'HeatMap') {
+                    $('#nav-heatmap').addClass('active');
+                } else if (currentAction === 'CommentsReport') {
+                    $('#nav-comments').addClass('active');
+                } else if (currentAction === 'PriorityMatrix') {
+                    $('#nav-priority').addClass('active');
+                }
+            }
+
+            // Method 1: Hide on document ready (immediate)
+            hideLoader();
+
+            // Method 2: Hide when window is fully loaded (including images, etc.)
+            $(window).on('load', function() {
+                hideLoader();
+            });
+
+            // Method 3: Fallback timeout - ensure loader hides after max 3 seconds
+            setTimeout(function() {
+                hideLoader();
+            }, 3000);
+
+            // Method 4: Check if page is already loaded (for cached pages)
+            if (document.readyState === 'complete') {
+                hideLoader();
+            }
+        });
+
+        // Show loader on page navigation
+        $(document).on('click', 'a[href]', function(e) {
+            var href = $(this).attr('href');
+            var target = $(this).attr('target');
+            
+            // Skip if it's an anchor link, javascript link, external link, or opens in new tab
+            if (!href || 
+                href.startsWith('#') || 
+                href.startsWith('javascript:') || 
+                href.startsWith('http://') || 
+                href.startsWith('https://') ||
+                href.startsWith('mailto:') || 
+                href.startsWith('tel:') ||
+                target === '_blank') {
+                return;
+            }
+            
+            // Reset loader state and show for internal navigation
+            loaderHidden = false;
+            $('#pageLoader').fadeIn(200);
+        });
+
+        // Show loader on form submission (except if it's an AJAX form)
+        $(document).on('submit', 'form:not([data-ajax])', function(e) {
+            var form = $(this);
+            // Only show loader for regular form submissions
+            if (!form.data('ajax') && form.attr('method') !== 'get') {
+                loaderHidden = false;
+                $('#pageLoader').fadeIn(200);
+            }
+        });
+
+        // Show loader when page is unloading (back/forward navigation)
+        $(window).on('beforeunload', function() {
+            loaderHidden = false;
+            $('#pageLoader').fadeIn(100);
+        });
+
+        // Additional safety: Hide loader if page becomes interactive
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', hideLoader);
+        } else {
+            hideLoader();
+        }
+
+        // Hide loader on any error
+        window.addEventListener('error', function() {
+            hideLoader();
+        });
+
+        // Reset loader state on new page load
+        loaderHidden = false;
+    </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

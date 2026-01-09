@@ -1,7 +1,25 @@
+using Microsoft.EntityFrameworkCore;
+using TechnicalAssessmentTask2.Data;
+using TechnicalAssessmentTask2.Models;
+using BCrypt.Net;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// Add DbContext with SQL Server
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// Add session for authentication
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(60);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
 
 var app = builder.Build();
 
@@ -18,7 +36,40 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseSession();
+
 app.UseAuthorization();
+
+// Initialize database and seed test user
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    try
+    {
+        var context = services.GetRequiredService<AppDbContext>();
+        context.Database.EnsureCreated();
+
+        // Seed test user if no users exist
+        if (!context.Users.Any())
+        {
+            var testUser = new User
+            {
+                Email = "admin",
+                PasswordHash = BCrypt.Net.BCrypt.HashPassword("admin"),
+                FirstName = "Admin",
+                LastName = "User",
+                CreatedAt = DateTime.UtcNow
+            };
+            context.Users.Add(testUser);
+            context.SaveChanges();
+        }
+    }
+    catch (Exception ex)
+    {
+        var logger = services.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "An error occurred while seeding the database.");
+    }
+}
 
 app.MapControllerRoute(
     name: "default",

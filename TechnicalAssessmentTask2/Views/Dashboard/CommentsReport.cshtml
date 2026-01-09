@@ -1,140 +1,211 @@
-﻿<h2>Comments Report</h2>
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Comments Report";
+}
 
-<section class="container-fluid mt-4">
-    <div class="card p-3">
-        <div class="row g-3 filter-bar">
+<div class="container-fluid px-4 py-3">
+    <!-- Page Title -->
+    <h2 class="mb-4 fw-bold">Comments Report</h2>
+
+    <!-- Filters -->
+    <div class="card p-3 mb-4">
+        <div class="row g-3 align-items-end">
             <div class="col-md">
-                <select class="form-select">
+                <label class="form-label small text-muted mb-1">Location</label>
+                <select class="form-select form-select-sm">
                     <option>All Locations</option>
                 </select>
             </div>
             <div class="col-md">
-                <select class="form-select">
+                <label class="form-label small text-muted mb-1">Department</label>
+                <select class="form-select form-select-sm">
                     <option>All Departments</option>
                 </select>
             </div>
             <div class="col-md">
-                <select class="form-select">
+                <label class="form-label small text-muted mb-1">Gender</label>
+                <select class="form-select form-select-sm">
                     <option>All Genders</option>
                 </select>
             </div>
             <div class="col-md">
-                <select class="form-select">
+                <label class="form-label small text-muted mb-1">Tenure</label>
+                <select class="form-select form-select-sm">
                     <option>All Tenures</option>
                 </select>
             </div>
             <div class="col-md">
-                <select class="form-select">
+                <label class="form-label small text-muted mb-1">Age</label>
+                <select class="form-select form-select-sm">
                     <option>All Ages</option>
                 </select>
             </div>
             <div class="col-md-auto d-flex gap-2">
-                <button class="btn btn-primary px-4">Apply Filters</button>
-                <button class="btn btn-outline-secondary">Export</button>
+                <button class="btn btn-primary px-4" style="background-color: #7c3aed; border-color: #7c3aed;">Apply Filters</button>
+                <button class="btn btn-outline-secondary">
+                    <i class="bi bi-download"></i> Export
+                </button>
             </div>
         </div>
     </div>
-   
 
-</section>
-<section class="container-fluid mt-4">
-    <div class="row g-4">
-
+    <!-- Key Metrics Cards -->
+    <div class="row g-4 mb-4">
         <div class="col-md-4">
-            <div class="card p-4">
-                <div class="kpi-label">Total Comments</div>
-                <div class="kpi-value">1,248</div>
-                <small class="text-positive">▲ 12% vs last cycle</small>
+            <div class="card p-4 h-100">
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                    <div class="kpi-label">Total Comments</div>
+                    <i class="bi bi-chat-dots fs-4" style="color: #7c3aed;"></i>
+                </div>
+                <div class="kpi-value mb-2">1,248</div>
+                <small class="text-positive fw-semibold">↑ 12% vs last cycle</small>
             </div>
         </div>
-
         <div class="col-md-4">
-            <div class="card p-4">
-                <div class="kpi-label">Positive Sentiment</div>
-                <div class="kpi-value text-positive">64%</div>
-                <small class="text-positive">▲ 5%</small>
+            <div class="card p-4 h-100">
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                    <div class="kpi-label">Positive Sentiment</div>
+                    <i class="bi bi-hand-thumbs-up fs-4 text-success"></i>
+                </div>
+                <div class="kpi-value text-success mb-2">64%</div>
+                <small class="text-positive fw-semibold">↑ 5% vs last cycle</small>
             </div>
         </div>
-
         <div class="col-md-4">
-            <div class="card p-4">
-                <div class="kpi-label">Negative Sentiment</div>
-                <div class="kpi-value text-negative">14%</div>
-                <small class="text-negative">▼ 2%</small>
+            <div class="card p-4 h-100">
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                    <div class="kpi-label">Negative Sentiment</div>
+                    <i class="bi bi-hand-thumbs-down fs-4 text-danger"></i>
+                </div>
+                <div class="kpi-value text-danger mb-2">14%</div>
+                <small class="text-negative fw-semibold">↓ 2% vs last cycle</small>
             </div>
         </div>
-
     </div>
-</section>
-<section class="container-fluid mt-4">
-    <div class="row g-4">
 
+    <!-- Sentiment Word Cloud -->
+    <div class="row g-4 mb-4">
+        <div class="col-12">
+            <div class="card p-4">
+                <h6 class="fw-semibold mb-3">Sentiment Word Cloud</h6>
+                <div class="word-cloud-container">
+                    <div class="word-cloud">
+                        <span class="word-large">Flexibility</span>
+                        <span class="word-large">Communication</span>
+                        <span class="word-medium">Management</span>
+                        <span class="word-medium">Salary</span>
+                        <span class="word-medium">Rewards</span>
+                        <span class="word-medium">Workload</span>
+                        <span class="word-small">Team</span>
+                        <span class="word-medium">Growth</span>
+                        <span class="word-large">Culture</span>
+                        <span class="word-small">Performance</span>
+                        <span class="word-small">Tools</span>
+                        <span class="word-medium">Processes</span>
+                        <span class="word-medium">Recognition</span>
+                        <span class="word-small">Benefits</span>
+                        <span class="word-small">Training</span>
+                        <span class="word-small">Transparency</span>
+                        <span class="word-small">Process</span>
+                        <span class="word-small">Remote</span>
+                        <span class="word-small">Goals</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Theme Overview and Recent Comments -->
+    <div class="row g-4">
         <div class="col-lg-8">
             <div class="card p-4">
-                <h6 class="fw-semibold mb-3">Engagement Analysis</h6>
-                <div class="chart-placeholder">
-                    Chart / Heatmap Placeholder
+                <h6 class="fw-semibold mb-2">Theme Overview</h6>
+                <p class="small text-muted mb-3">Visualizing the relationship and volume of top discussion themes.</p>
+                <div class="theme-bubble-chart">
+                    <svg viewBox="0 0 600 400" class="bubble-svg">
+                        <!-- WorkLoad, Work-Life Balance, Tools & Resources (red, overlapping) -->
+                        <circle cx="200" cy="150" r="60" fill="#ef4444" opacity="0.7" />
+                        <circle cx="230" cy="170" r="55" fill="#ef4444" opacity="0.7" />
+                        <circle cx="210" cy="190" r="50" fill="#ef4444" opacity="0.7" />
+                        <text x="200" y="150" text-anchor="middle" class="bubble-label">WorkLoad</text>
+                        <text x="230" y="170" text-anchor="middle" class="bubble-label">Work-Life Balance</text>
+                        <text x="210" y="190" text-anchor="middle" class="bubble-label">Tools & Resources</text>
+                        
+                        <!-- Compensation (red, separate) -->
+                        <circle cx="400" cy="100" r="45" fill="#ef4444" opacity="0.7" />
+                        <text x="400" y="100" text-anchor="middle" class="bubble-label">Compensation</text>
+                        
+                        <!-- Career Growth and Rewards (blue and red, overlapping) -->
+                        <circle cx="350" cy="250" r="55" fill="#3b82f6" opacity="0.7" />
+                        <circle cx="380" cy="270" r="50" fill="#ef4444" opacity="0.7" />
+                        <text x="350" y="250" text-anchor="middle" class="bubble-label">Career Growth</text>
+                        <text x="380" y="270" text-anchor="middle" class="bubble-label">Rewards</text>
+                        
+                        <!-- Sense of Belonging and Leadership (blue, overlapping) -->
+                        <circle cx="150" cy="300" r="50" fill="#3b82f6" opacity="0.7" />
+                        <circle cx="180" cy="320" r="55" fill="#3b82f6" opacity="0.7" />
+                        <text x="150" y="300" text-anchor="middle" class="bubble-label">Sense of Belonging</text>
+                        <text x="180" y="320" text-anchor="middle" class="bubble-label">Leadership</text>
+                    </svg>
                 </div>
             </div>
         </div>
 
         <div class="col-lg-4">
             <div class="card p-4">
-                <h6 class="fw-semibold mb-3">Top Drivers</h6>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item d-flex justify-content-between">
-                        Leadership <span class="fw-semibold text-primary">+0.82</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between">
-                        Work-Life Balance <span class="fw-semibold text-primary">+0.85</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between">
-                        Recognition <span class="fw-semibold text-primary">+0.68</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-    </div>
-</section>
-
-
-<section class="container-fluid mt-4">
-    <div class="row g-4">
-
-        <div class="col-lg-8">
-            <div class="card p-4">
-                <h6 class="fw-semibold mb-3">Theme Overview</h6>
-                <div class="chart-placeholder">
-                    Theme / Bubble Visualization Placeholder
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h6 class="fw-semibold mb-0">Recent Comments</h6>
+                    <div class="btn-group btn-group-sm" role="group">
+                        <input type="radio" class="btn-check" name="commentFilter" id="filterAll" checked>
+                        <label class="btn btn-outline-secondary" for="filterAll">all</label>
+                        <input type="radio" class="btn-check" name="commentFilter" id="filterPositive">
+                        <label class="btn btn-outline-secondary" for="filterPositive">positive</label>
+                        <input type="radio" class="btn-check" name="commentFilter" id="filterNegative">
+                        <label class="btn btn-outline-secondary" for="filterNegative">negative</label>
+                    </div>
                 </div>
-            </div>
-        </div>
-
-        <div class="col-lg-4">
-            <div class="card p-4">
-                <h6 class="fw-semibold mb-3">Recent Comments</h6>
 
                 <div class="comment-card positive mb-3">
-                    <small class="text-success fw-semibold">Positive</small>
-                    <p class="mb-1">Remote flexibility has significantly improved my work-life balance.</p>
-                    <small class="text-muted">2 days ago</small>
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <small class="badge bg-success">Positive</small>
+                        <small class="text-muted">2 days ago</small>
+                    </div>
+                    <p class="mb-2 small">"I really appreciate the flexibility with remote work options. It has significantly improved my work-life balance and overall productivity."</p>
+                    <span class="badge bg-light text-dark small">Work Life Balance</span>
                 </div>
 
                 <div class="comment-card negative mb-3">
-                    <small class="text-danger fw-semibold">Negative</small>
-                    <p class="mb-1">Salary adjustments did not keep pace with inflation.</p>
-                    <small class="text-muted">1 week ago</small>
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <small class="badge bg-danger">Negative</small>
+                        <small class="text-muted">1 week ago</small>
+                    </div>
+                    <p class="mb-2 small">"Salary adjustments this year didn't seem to match the inflation rate. A lot of the team is concerned about compensation competitiveness."</p>
+                    <span class="badge bg-light text-dark small">Rewards</span>
+                </div>
+
+                <div class="comment-card negative mb-3">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <small class="badge bg-danger">Negative</small>
+                        <small class="text-muted">3 days ago</small>
+                    </div>
+                    <p class="mb-2 small">"The new project management tool is quite confusing and slows us down. We need better training or a more intuitive system."</p>
+                    <span class="badge bg-light text-dark small">Enablement</span>
                 </div>
 
                 <div class="comment-card neutral">
-                    <small class="fw-semibold">Neutral</small>
-                    <p class="mb-1">Cross-team collaboration is improving, but silos remain.</p>
-                    <small class="text-muted">1 week ago</small>
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <small class="badge bg-secondary">Neutral</small>
+                        <small class="text-muted">1 week ago</small>
+                    </div>
+                    <p class="mb-2 small">"The cross-functional collaboration between marketing and engineering has improved, but there are still silos."</p>
+                    <span class="badge bg-light text-dark small">Collaboration</span>
                 </div>
 
+                <div class="text-end mt-3">
+                    <a href="#" class="text-decoration-none small">View More →</a>
+                </div>
             </div>
         </div>
-
     </div>
-</section>
+</div>
+ 

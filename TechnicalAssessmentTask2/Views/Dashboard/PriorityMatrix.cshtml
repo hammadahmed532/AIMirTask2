@@ -1,5 +1,181 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Priority Matrix";
 }
+
+<div class="container-fluid px-4 py-3">
+    <!-- Page Title -->
+    <h2 class="mb-4 fw-bold">Priority Matrix</h2>
+
+    <!-- Filters -->
+    <div class="card p-3 mb-4">
+        <div class="row g-3 align-items-end">
+            <div class="col-md">
+                <label class="form-label small text-muted mb-1">Location</label>
+                <select class="form-select form-select-sm">
+                    <option>All Locations</option>
+                </select>
+            </div>
+            <div class="col-md">
+                <label class="form-label small text-muted mb-1">Department</label>
+                <select class="form-select form-select-sm">
+                    <option>All Departments</option>
+                </select>
+            </div>
+            <div class="col-md">
+                <label class="form-label small text-muted mb-1">Gender</label>
+                <select class="form-select form-select-sm">
+                    <option>All Genders</option>
+                </select>
+            </div>
+            <div class="col-md">
+                <label class="form-label small text-muted mb-1">Tenure</label>
+                <select class="form-select form-select-sm">
+                    <option>All Tenures</option>
+                </select>
+            </div>
+            <div class="col-md">
+                <label class="form-label small text-muted mb-1">Age</label>
+                <select class="form-select form-select-sm">
+                    <option>All Ages</option>
+                </select>
+            </div>
+            <div class="col-md-auto d-flex gap-2">
+                <button class="btn btn-primary px-4" style="background-color: #7c3aed; border-color: #7c3aed;">Apply Filters</button>
+                <button class="btn btn-outline-secondary">
+                    <i class="bi bi-download"></i> Export
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <!-- Priority Matrix Chart -->
+        <div class="col-lg-9">
+            <div class="card p-4">
+                <div class="priority-matrix-container">
+                    <svg viewBox="0 0 800 600" class="priority-matrix-svg">
+                        <!-- Grid lines -->
+                        <line x1="400" y1="0" x2="400" y2="600" stroke="#d1d5db" stroke-width="2" stroke-dasharray="5,5" />
+                        <line x1="0" y1="300" x2="800" y2="300" stroke="#d1d5db" stroke-width="2" stroke-dasharray="5,5" />
+                        
+                        <!-- Quadrant labels -->
+                        <text x="200" y="50" text-anchor="middle" class="quadrant-label" fill="#16a34a">Keep Strong</text>
+                        <text x="600" y="50" text-anchor="middle" class="quadrant-label" fill="#f59e0b">Low Impact</text>
+                        <text x="200" y="550" text-anchor="middle" class="quadrant-label" fill="#dc2626">Priority Action</text>
+                        <text x="600" y="550" text-anchor="middle" class="quadrant-label" fill="#6b7280">Reassess or Monitor</text>
+                        
+                        <!-- Quadrant background colors -->
+                        <rect x="0" y="0" width="400" height="300" fill="#ecfdf5" opacity="0.3" />
+                        <rect x="400" y="0" width="400" height="300" fill="#fef3c7" opacity="0.3" />
+                        <rect x="0" y="300" width="400" height="300" fill="#fee2e2" opacity="0.3" />
+                        <rect x="400" y="300" width="400" height="300" fill="#f3f4f6" opacity="0.3" />
+                        
+                        <!-- X-axis label -->
+                        <text x="400" y="590" text-anchor="middle" class="axis-label">Driver correlation with advocacy</text>
+                        <text x="100" y="310" text-anchor="middle" class="axis-tick">0.10</text>
+                        <text x="400" y="310" text-anchor="middle" class="axis-tick">0.50</text>
+                        <text x="700" y="310" text-anchor="middle" class="axis-tick">0.90</text>
+                        
+                        <!-- Y-axis label -->
+                        <text x="20" y="300" text-anchor="middle" class="axis-label" transform="rotate(-90, 20, 300)">Reversed Netscores</text>
+                        <text x="390" y="50" text-anchor="middle" class="axis-tick">0.9</text>
+                        <text x="390" y="300" text-anchor="middle" class="axis-tick">0.5</text>
+                        <text x="390" y="550" text-anchor="middle" class="axis-tick">0.1</text>
+                        
+                        <!-- Data points (scatter plot) -->
+                        <!-- Driver A - Keep Strong (top-left) -->
+                        <circle cx="250" cy="150" r="8" fill="#3b82f6" />
+                        <text x="250" y="140" text-anchor="middle" class="driver-label">A</text>
+                        
+                        <!-- Driver B - Keep Strong -->
+                        <circle cx="320" cy="120" r="8" fill="#8b5cf6" />
+                        <text x="320" y="110" text-anchor="middle" class="driver-label">B</text>
+                        
+                        <!-- Driver C - Low Impact (top-right) -->
+                        <circle cx="550" cy="180" r="8" fill="#ec4899" />
+                        <text x="550" y="170" text-anchor="middle" class="driver-label">C</text>
+                        
+                        <!-- Driver D - Low Impact -->
+                        <circle cx="650" cy="200" r="8" fill="#f59e0b" />
+                        <text x="650" y="190" text-anchor="middle" class="driver-label">D</text>
+                        
+                        <!-- Driver E - Priority Action (bottom-left) -->
+                        <circle cx="180" cy="450" r="8" fill="#ef4444" />
+                        <text x="180" y="440" text-anchor="middle" class="driver-label">E</text>
+                        
+                        <!-- Driver F - Priority Action -->
+                        <circle cx="280" cy="480" r="8" fill="#dc2626" />
+                        <text x="280" y="470" text-anchor="middle" class="driver-label">F</text>
+                        
+                        <!-- Driver G - Priority Action -->
+                        <circle cx="350" cy="420" r="8" fill="#f87171" />
+                        <text x="350" y="410" text-anchor="middle" class="driver-label">G</text>
+                        
+                        <!-- Driver H - Reassess or Monitor (bottom-right) -->
+                        <circle cx="500" cy="450" r="8" fill="#94a3b8" />
+                        <text x="500" y="440" text-anchor="middle" class="driver-label">H</text>
+                        
+                        <!-- Driver I - Reassess or Monitor -->
+                        <circle cx="600" cy="480" r="8" fill="#64748b" />
+                        <text x="600" y="470" text-anchor="middle" class="driver-label">I</text>
+                        
+                        <!-- Driver J - Keep Strong -->
+                        <circle cx="300" cy="200" r="8" fill="#06b6d4" />
+                        <text x="300" y="190" text-anchor="middle" class="driver-label">J</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Drivers Legend -->
+        <div class="col-lg-3">
+            <div class="card p-4">
+                <h6 class="fw-semibold mb-3">Drivers</h6>
+                <div class="drivers-legend">
+                    <div class="driver-item mb-2">
+                        <div class="driver-dot" style="background-color: #3b82f6;"></div>
+                        <span class="small">Driver A</span>
+                    </div>
+                    <div class="driver-item mb-2">
+                        <div class="driver-dot" style="background-color: #8b5cf6;"></div>
+                        <span class="small">Driver B</span>
+                    </div>
+                    <div class="driver-item mb-2">
+                        <div class="driver-dot" style="background-color: #ec4899;"></div>
+                        <span class="small">Driver C</span>
+                    </div>
+                    <div class="driver-item mb-2">
+                        <div class="driver-dot" style="background-color: #f59e0b;"></div>
+                        <span class="small">Driver D</span>
+                    </div>
+                    <div class="driver-item mb-2">
+                        <div class="driver-dot" style="background-color: #ef4444;"></div>
+                        <span class="small">Driver E</span>
+                    </div>
+                    <div class="driver-item mb-2">
+                        <div class="driver-dot" style="background-color: #dc2626;"></div>
+                        <span class="small">Driver F</span>
+                    </div>
+                    <div class="driver-item mb-2">
+                        <div class="driver-dot" style="background-color: #f87171;"></div>
+                        <span class="small">Driver G</span>
+                    </div>
+                    <div class="driver-item mb-2">
+                        <div class="driver-dot" style="background-color: #94a3b8;"></div>
+                        <span class="small">Driver H</span>
+                    </div>
+                    <div class="driver-item mb-2">
+                        <div class="driver-dot" style="background-color: #64748b;"></div>
+                        <span class="small">Driver I</span>
+                    </div>
+                    <div class="driver-item mb-2">
+                        <div class="driver-dot" style="background-color: #06b6d4;"></div>
+                        <span class="small">Driver J</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
