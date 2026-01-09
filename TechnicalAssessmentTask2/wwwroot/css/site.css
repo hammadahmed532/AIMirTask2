@@ -1,0 +1,137 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+
+  margin-bottom: 60px;
+}
+
+body {
+    background-color: #f6f7fb;
+    font-family: 'Exo 2', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+}
+.btn {
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+.kpi-value {
+    font-weight: 700;
+}
+
+/* Header */
+.app-header {
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 0.75rem 1.5rem;
+}
+
+.brand {
+    font-weight: 700;
+    font-size: 1.25rem;
+    letter-spacing: 0.5px;
+}
+
+    .brand span {
+        color: #7c3aed;
+    }
+
+/* Navigation */
+.nav-pill {
+    font-weight: 500;
+    color: #6b7280;
+}
+
+    .nav-pill.active {
+        background-color: #ede9fe;
+        color: #5b21b6;
+    }
+
+/* Filters */
+.filter-bar select {
+    font-size: 0.875rem;
+}
+
+/* Cards */
+.card {
+    border: none;
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+}
+
+.kpi-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+}
+
+.kpi-label {
+    font-size: 0.85rem;
+    color: #6b7280;
+}
+
+/* Status colors */
+.text-positive {
+    color: #16a34a;
+}
+
+.text-negative {
+    color: #dc2626;
+}
+
+.bg-soft-positive {
+    background-color: #ecfdf5;
+}
+
+.bg-soft-negative {
+    background-color: #fef2f2;
+}
+
+/* Placeholder panels */
+.chart-placeholder {
+    height: 300px;
+    border-radius: 12px;
+    background: repeating-linear-gradient( 45deg, #f3f4f6, #f3f4f6 10px, #e5e7eb 10px, #e5e7eb 20px );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9ca3af;
+    font-weight: 500;
+}
+
+/* Comment cards */
+.comment-card {
+    border-left: 4px solid #e5e7eb;
+    padding-left: 1rem;
+}
+
+    .comment-card.positive {
+        border-color: #22c55e;
+    }
+
+    .comment-card.negative {
+        border-color: #ef4444;
+    }
+
+    .comment-card.neutral {
+        border-color: #a1a1aa;
+    }
+
+</style >
