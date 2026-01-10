@@ -1,4 +1,5 @@
-﻿@{
+﻿@model TechnicalAssessmentTask2.Models.CommentsReportViewModel
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = "Comments Report";
 }
@@ -12,32 +13,52 @@
         <div class="row g-3 align-items-end">
             <div class="col-md">
                 <label class="form-label small text-muted mb-1">Location</label>
-                <select class="form-select form-select-sm">
-                    <option>All Locations</option>
+                <select class="form-select form-select-sm" name="location" id="locationFilter">
+                    <option value="">All Locations</option>
+                    @foreach (var location in Model.Locations)
+                    {
+                        <option value="@location">@location</option>
+                    }
                 </select>
             </div>
             <div class="col-md">
                 <label class="form-label small text-muted mb-1">Department</label>
-                <select class="form-select form-select-sm">
+                <select class="form-select form-select-sm" name="department" id="departmentFilter">
                     <option>All Departments</option>
+                    @foreach (var department in Model.Departments)
+                    {
+                        <option value="@department">@department</option>
+                    }
                 </select>
             </div>
             <div class="col-md">
                 <label class="form-label small text-muted mb-1">Gender</label>
-                <select class="form-select form-select-sm">
-                    <option>All Genders</option>
+                <select class="form-select form-select-sm" name="Gender" id="GenderFilter">
+                    <option>All Gender</option>
+                    @foreach (var gender in Model.Genders)
+                    {
+                        <option value="@gender">@gender</option>
+                    }
                 </select>
             </div>
             <div class="col-md">
                 <label class="form-label small text-muted mb-1">Tenure</label>
-                <select class="form-select form-select-sm">
-                    <option>All Tenures</option>
+                <select class="form-select form-select-sm" name="Tenure" id="TenuresFilter">
+                    <option>All Tenure</option>
+                    @foreach (var tenure in Model.Tenures)
+                    {
+                        <option value="@tenure.Value">@tenure.Text</option>
+                    }
                 </select>
             </div>
             <div class="col-md">
                 <label class="form-label small text-muted mb-1">Age</label>
-                <select class="form-select form-select-sm">
+                <select class="form-select form-select-sm" name="Age" id="AgesFilter">
                     <option>All Ages</option>
+                    @foreach (var age in Model.Ages)
+                    {
+                        <option value="@age.Value">@age.Text</option>
+                    }
                 </select>
             </div>
             <div class="col-md-auto d-flex gap-2">
@@ -89,26 +110,15 @@
             <div class="card p-4">
                 <h6 class="fw-semibold mb-3">Sentiment Word Cloud</h6>
                 <div class="word-cloud-container">
-                    <div class="word-cloud">
-                        <span class="word-large">Flexibility</span>
-                        <span class="word-large">Communication</span>
-                        <span class="word-medium">Management</span>
-                        <span class="word-medium">Salary</span>
-                        <span class="word-medium">Rewards</span>
-                        <span class="word-medium">Workload</span>
-                        <span class="word-small">Team</span>
-                        <span class="word-medium">Growth</span>
-                        <span class="word-large">Culture</span>
-                        <span class="word-small">Performance</span>
-                        <span class="word-small">Tools</span>
-                        <span class="word-medium">Processes</span>
-                        <span class="word-medium">Recognition</span>
-                        <span class="word-small">Benefits</span>
-                        <span class="word-small">Training</span>
-                        <span class="word-small">Transparency</span>
-                        <span class="word-small">Process</span>
-                        <span class="word-small">Remote</span>
-                        <span class="word-small">Goals</span>
+                    <div class="word-cloud-card">
+                        <div class="word-cloud-title">Canvas-based Word Cloud</div>
+                        <canvas id="word-cloud-canvas" width="800px" height="400px"></canvas>
+                        <div id="word-cloud-canvas-hover-box" hidden></div>
+                    </div>
+                    <div class="word-cloud-card">
+                        <div class="word-cloud-title">HTML-based Word Cloud</div>
+                        <div id="word-cloud-html" width="800px" height="400px"></div>
+                        <div id="word-cloud-canvas-hover-box" hidden></div>
                     </div>
                 </div>
             </div>
@@ -209,3 +219,122 @@
     </div>
 </div>
  
+
+<script type="text/javascript">
+        const drawWordCloud = () => {
+              const words = [
+                ["superman", 27],
+                ["batman", 8],
+                ["superhero", 7],
+                ["supergirl", 3],
+                ["lois lane", 7],
+                ["kryptonite", 9],
+                ["wonder woman", 2],
+                ["lex luthor", 5],
+                ["dc comics", 4],
+                ["krypton", 3],
+                ["smallville", 3],
+                ["cape", 2],
+                ["daily planet", 2],
+                ["superboy", 1],
+                ["jor-el", 1],
+                ["metropolis", 3],
+                ["clark kent", 5],
+                ["christopher reeve", 1],
+                ["united states", 1],
+                ["action comics", 1],
+                ["demigod", 1],
+                ["clark", 3],
+                ["superheroes", 3],
+                ["aquaman", 1],
+                ["movie", 1],
+                ["villain", 1],
+                ["cartoon", 1],
+                ["high school", 1],
+                ["supervillain", 1],
+                ["kent", 2],
+                ["spider man", 1],
+                ["comic books", 1],
+                ["marvel comic", 1],
+                ["silver surfer", 1],
+                ["american comic book", 1],
+                ["flash", 1],
+                ["lois", 3],
+                ["super hero", 1],
+                ["justice league", 2],
+                ["captain", 1],
+                ["monster", 1],
+                ["action", 1],
+                ["justice league of america", 2],
+                ["justice", 1],
+                ["invisible man", 1],
+                ["spider-man", 1],
+                ["zod", 2],
+                ["doomsday", 2],
+                ["spiderman", 1],
+                ["homelander", 1],
+                ["lex", 2]
+              ];
+
+              if (WordCloud.isSupported) {
+                const wordCloudCanvas = document.getElementById('word-cloud-canvas');
+                const wordCloudHtml = document.getElementById('word-cloud-html');
+                const wordCloudCanvasHoverBox = document.getElementById('word-cloud-canvas-hover-box');
+                const elements = [wordCloudCanvas, wordCloudHtml];
+                const originalWords = words.map(x => ({ word: x[0], count: x[1] }));
+                const options = {
+                  list: words,
+                  gridSize: 10,
+                  weightFactor: 8,
+                  fontFamily: "sans-serif",
+                  color: 'random-dark',
+                  rotateRatio: 0,
+                  rotationSteps: 2,
+                  shape: "circle",
+                  ellipticity: 0.6,
+                  shrinkToFit: true,
+                  minSize: 6,
+                  classes: 'word-cloud-item',
+                  click: (item, dimension, event) => {
+                    // We lookup the original item to get the accurate count
+                    // because the 'shrinkToFit' option changes the count to fit the word
+                    const originalItem = originalWords.find(x => x.word === item[0]);
+                    alert(`${originalItem.word}: ${originalItem.count}`);
+                  },
+                  // This is not working correctly
+                  /*
+                  hover: (item, dimension, event) => {
+                    if (!dimension) {
+                      wordCloudCanvasHoverBox.hidden = true;
+                      return;
+                    }
+
+                    wordCloudCanvasHoverBox.hidden = false;
+                    wordCloudCanvasHoverBox.style.left = dimension.x + 'px';
+                    wordCloudCanvasHoverBox.style.top = dimension.y + 'px';
+                    wordCloudCanvasHoverBox.style.width = dimension.w + 'px';
+                    wordCloudCanvasHoverBox.style.height = dimension.h + 'px';
+                  }
+                  */
+                };
+                WordCloud(elements, options);
+
+                // We have to add our own click handler to the HTML-based version
+                // because the library only handles clicks on the canvas-based version
+                wordCloudCanvas.addEventListener('wordcloudstop', function (e) {
+                  document.querySelectorAll('.word-cloud-item').forEach(function (element) {
+                      element.addEventListener('click', event => {
+                        const originalItem = originalWords.find(x => x.word === element.textContent);
+                        alert(`${originalItem.word}: ${originalItem.count}`);
+                      });
+                  });
+            });
+              } else {
+                console.log('WordCloud not supported');
+              }
+            };
+
+
+
+            drawWordCloud();
+</script>

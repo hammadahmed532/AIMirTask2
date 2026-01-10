@@ -1,0 +1,151 @@
+﻿Respondent ID,Employee ID,Department,Age,Tenure,Gender,Location,Manager,Leadership Level,Why_Pride_1,Why_Pride_2,Why_Sense_1,Why_Sense_2,Why_Sense_3,Why_Meaningfulness_1,Why_Meaningfulness_2,Who_FaithLeadership_1,Who_FaithLeadership_2,Who_FaithLeadership_3,Who_trust_1,Who_trust_2,Who_trust_3,Who_Relationship_1,Who_Relationship_2,Who_Relationship_3,Who_Relationship_4,Who_Relationship_5,Who_Relationship_6,Who_Relationship_7,Who_SenseBelonging_1,How_SenseDirection_1,How_RoleClarity_1,How_LineSight_1,How_SystemTools_1,How_SystemTools_2,How_SystemTools_3,How_SystemTools_4,How_SenseProgress_1,What_WorkCulture_1,What_WorkCulture_2,What_WorkCulture_3,What_WorkCulture_4,What_WorkCulture_5,What_TalentDevelopment_1,What_TalentDevelopment_2,What_Recognition_1,What_CompensationBenefits_1,What_WorkLifeBalance_1,What_WorkLifeBalance_2,What_WorkLifeBalance_3,What_PsychologicalSafety_1,What_PsychologicalSafety_2,What_PsychologicalSafety_3,What_PsychologicalSafety_4,What_PsychologicalSafety_5,What_PsychologicalSafety_6,What_PsychologicalSafety_7,Outcome_Advocay_1,Outcome_DiscretionaryEffort_1,Outcome_IntentToStay_1
+1,EMP1001,Finance,23,3.7,Female,Karachi,Ali Raza,Manager,1,4,3,5,5,2,4,1,4,5,1,3,5,4,2,5,5,5,2,4,2,5,4,3,3,4,4,3,4,3,5,5,3,3,1,1,3,5,1,4,2,4,1,3,4,5,5,4,3,3,2
+2,EMP1002,Supply Chain,27,5.3,Female,Karachi,Usman Tariq,Manager,5,4,4,5,5,5,5,2,3,4,4,4,3,4,3,3,5,1,1,3,4,3,5,4,2,1,5,4,1,1,3,1,1,5,1,3,1,3,3,5,2,5,3,2,5,2,1,1,4,2,1
+3,EMP1003,Legal,23,2.8,Male,Multan,Hira Shah,Individual Contributor,1,4,2,2,1,5,4,1,5,5,5,4,4,5,4,4,3,1,2,4,5,4,5,4,5,4,2,5,3,4,4,1,4,1,4,5,2,4,1,5,1,1,3,5,3,2,5,3,5,5,1
+4,EMP1004,R&D,59,7.0,Male,Faisalabad,Sara Ahmed,Senior Manager,3,3,3,3,3,1,2,2,2,5,1,5,2,2,2,2,1,1,3,2,2,2,2,5,5,3,4,2,1,4,3,1,3,5,1,2,4,3,5,5,1,2,1,2,4,2,2,3,2,2,4
+5,EMP1005,Customer Support,43,6.9,Female,Faisalabad,Zainab Ali,Team Lead,5,2,5,4,4,3,2,3,4,4,2,1,2,4,2,2,1,2,2,2,2,3,5,2,3,5,5,3,3,2,5,2,3,1,2,5,5,5,3,5,4,5,4,1,4,3,4,5,1,5,1
+6,EMP1006,Customer Support,28,3.6,Female,Lahore,Zainab Ali,Manager,3,1,1,3,4,5,1,2,3,4,4,1,4,1,2,1,3,4,5,1,2,3,4,1,2,2,4,2,4,5,1,4,1,3,4,1,4,3,3,5,5,2,5,5,5,5,2,3,2,4,1
+7,EMP1007,R&D,56,3.1,Prefer not to say,Karachi,Omar Farooq,Senior Individual Contributor,3,5,2,2,4,4,5,4,5,2,4,5,5,3,4,4,2,1,3,4,4,3,1,5,3,3,4,5,4,5,3,2,1,4,5,1,2,5,5,4,1,5,1,3,2,1,2,1,5,4,3
+8,EMP1008,Legal,34,11.3,Female,Karachi,Hira Shah,Manager,2,2,3,5,3,1,3,2,5,4,4,2,3,1,4,2,2,3,2,1,5,5,4,4,1,1,4,5,5,4,5,1,5,3,2,4,5,2,2,1,2,1,2,5,5,3,2,2,5,1,4
+9,EMP1009,Operations,28,3.8,Male,Rawalpindi,Hassan Malik,Team Lead,2,1,1,2,5,4,5,2,2,5,3,5,5,1,3,4,4,1,3,4,4,2,5,3,5,4,1,3,2,1,4,4,5,4,5,2,5,2,4,1,5,4,4,1,1,2,4,2,3,1,1
+10,EMP1010,Marketing,35,11.4,Male,Multan,Fatima Noor,Director,4,3,4,2,4,5,3,5,4,4,3,2,5,1,1,4,4,4,4,3,1,4,1,5,4,4,2,4,5,2,4,1,5,4,2,1,3,5,3,4,5,3,2,3,2,1,5,2,5,1,4
+11,EMP1011,Sales,56,18.2,Female,Lahore,Hamza Qureshi,VP,4,5,4,5,2,3,1,5,3,1,3,3,3,3,2,4,2,2,5,2,1,2,3,2,5,2,3,2,1,1,1,1,3,2,4,2,2,4,2,3,3,2,3,5,2,1,5,3,5,1,1
+12,EMP1012,Supply Chain,36,12.3,Male,Faisalabad,Usman Tariq,Manager,4,5,2,3,4,3,2,5,4,2,5,5,3,2,1,1,2,5,3,3,2,5,2,2,5,3,2,1,4,3,3,1,5,4,2,2,2,2,1,1,4,3,1,4,1,1,1,5,5,5,1
+13,EMP1013,Marketing,47,6.7,Female,Peshawar,Hira Shah,Team Lead,4,4,2,3,1,2,3,2,4,4,3,1,5,1,3,1,1,2,5,1,4,1,1,2,3,5,1,1,2,2,3,5,3,4,3,1,3,1,3,4,5,4,5,3,5,4,2,1,5,3,3
+14,EMP1014,R&D,47,22.1,Male,Karachi,Sara Ahmed,Senior Manager,5,5,4,3,1,3,5,1,5,3,3,4,1,3,5,5,1,4,4,2,2,2,1,3,3,3,5,1,3,3,1,5,1,1,4,3,4,2,5,1,2,1,4,5,5,3,5,3,2,5,1
+15,EMP1015,Supply Chain,56,6.6,Male,Rawalpindi,Hassan Malik,Manager,4,2,1,2,4,1,3,2,5,4,2,5,3,4,5,1,4,5,4,2,2,3,4,3,3,5,2,1,2,4,1,4,2,5,2,5,1,4,5,2,4,1,2,5,1,4,1,2,3,3,4
+16,EMP1016,Operations,30,6.1,Female,Karachi,Hassan Malik,Team Lead,1,5,4,4,2,3,4,4,3,3,5,3,3,2,4,2,2,1,2,3,5,3,1,5,3,4,1,5,2,1,1,2,5,4,4,2,3,5,5,1,4,3,1,5,4,1,2,4,3,3,4
+17,EMP1017,Sales,49,14.9,Female,Hyderabad,Omar Farooq,Director,5,2,4,1,4,1,4,5,1,5,5,3,1,3,1,1,2,3,1,4,4,1,3,2,5,4,4,1,2,3,2,3,4,1,5,2,1,2,5,4,1,4,5,3,2,5,5,4,5,4,4
+18,EMP1018,IT,57,21.5,Female,Multan,Naveed Iqbal,VP,5,1,3,4,4,3,2,3,2,4,2,1,2,5,2,3,5,3,2,1,5,4,3,4,2,3,2,1,5,1,5,3,2,4,4,4,4,4,3,1,4,3,1,1,3,3,2,4,2,3,3
+19,EMP1019,Marketing,29,3.2,Female,Karachi,Hira Shah,Individual Contributor,4,4,2,3,2,3,5,1,1,4,5,3,3,5,4,5,2,4,1,1,5,5,2,5,5,1,4,4,5,3,3,3,5,2,3,5,4,4,3,4,3,2,3,3,4,4,2,2,1,1,3
+20,EMP1020,Supply Chain,28,8.7,Female,Hyderabad,Usman Tariq,Team Lead,3,3,1,2,2,1,2,3,2,4,4,3,1,5,4,4,4,1,3,1,4,5,3,2,2,2,5,2,5,2,5,5,2,3,1,1,1,3,2,3,5,3,1,1,1,5,1,1,2,1,5
+21,EMP1021,Marketing,32,7.6,Male,Islamabad,Fatima Noor,Senior Manager,1,2,1,4,4,1,2,2,5,2,1,1,4,1,4,5,3,2,3,4,2,4,1,4,1,1,4,5,1,2,5,3,3,2,2,1,3,4,4,1,3,1,2,3,5,1,4,4,5,1,1
+22,EMP1022,Marketing,53,0.5,Prefer not to say,Rawalpindi,Hira Shah,Individual Contributor,3,3,1,1,2,3,3,1,3,3,3,1,2,1,2,5,2,1,5,5,5,4,2,4,2,2,3,2,1,4,2,3,5,4,1,5,4,4,3,5,2,2,4,4,1,1,4,1,5,2,4
+23,EMP1023,Operations,25,1.7,Male,Karachi,Usman Tariq,Individual Contributor,5,1,3,2,4,1,1,2,2,1,1,3,4,4,2,4,4,1,2,4,1,4,4,1,5,4,5,3,1,2,2,3,3,2,1,3,2,1,4,2,3,3,3,3,1,3,3,3,1,4,3
+24,EMP1024,Supply Chain,30,1.5,Male,Islamabad,Hassan Malik,Senior Individual Contributor,1,1,1,2,2,1,4,3,3,2,1,3,5,1,5,1,5,5,5,1,2,1,2,5,1,2,3,5,2,1,5,5,4,5,2,2,5,4,3,5,5,5,5,5,4,1,2,2,2,5,3
+25,EMP1025,Operations,56,18.9,Male,Multan,Usman Tariq,VP,3,1,3,1,2,2,5,2,4,4,2,2,3,2,2,4,3,3,4,1,1,5,5,3,2,5,3,4,3,1,4,3,1,5,4,2,4,4,2,2,4,2,4,2,5,4,3,3,4,1,5
+26,EMP1026,Marketing,50,22.5,Male,Karachi,Fatima Noor,Director,1,5,1,5,3,1,2,4,4,3,2,5,5,4,2,1,5,1,5,5,2,3,3,5,1,4,2,2,2,2,3,5,3,5,1,4,5,3,1,3,5,2,5,3,2,5,5,4,1,1,5
+27,EMP1027,People & Culture,59,13.8,Male,Karachi,Ayesha Khan,Manager,4,5,5,4,5,5,3,1,5,3,5,5,2,4,2,4,2,1,1,1,4,2,5,4,3,2,2,4,4,2,2,2,4,1,3,3,1,5,2,3,5,3,1,1,5,5,4,1,2,4,3
+28,EMP1028,Finance,24,5.2,Female,Karachi,Naveed Iqbal,Senior Individual Contributor,1,5,2,4,5,3,2,2,5,3,1,2,1,3,3,4,3,3,2,5,5,5,4,5,4,2,1,3,2,2,3,5,3,5,4,5,1,4,5,5,1,5,4,5,1,4,2,3,1,3,3
+29,EMP1029,Supply Chain,30,8.7,Male,Hyderabad,Usman Tariq,Manager,4,5,3,1,2,1,1,3,1,2,5,5,1,3,2,5,3,3,1,4,4,1,4,4,5,5,2,4,2,5,4,5,5,2,1,1,4,1,5,4,1,2,3,3,1,5,4,3,5,4,5
+30,EMP1030,Customer Support,34,1.5,Male,Lahore,Sana Rizvi,Senior Individual Contributor,2,5,1,1,5,3,1,1,2,5,5,4,1,2,1,2,2,1,2,4,1,2,1,1,4,3,4,1,3,1,5,3,4,5,2,3,5,2,1,1,1,3,4,4,5,1,3,3,1,1,1
+31,EMP1031,People & Culture,28,0.6,Male,Faisalabad,Ayesha Khan,Individual Contributor,4,2,1,3,3,5,1,1,5,4,5,3,1,4,3,3,4,4,4,5,2,3,2,3,2,2,1,5,4,4,1,2,5,2,1,1,3,3,3,4,5,3,3,1,2,3,3,4,2,1,4
+32,EMP1032,Operations,34,3.0,Female,Lahore,Usman Tariq,Senior Individual Contributor,4,5,2,2,1,1,4,1,3,4,3,1,2,1,4,1,3,2,3,3,2,1,1,5,2,4,1,1,1,5,4,2,4,2,1,1,3,2,2,2,4,1,5,2,2,5,2,1,3,4,4
+33,EMP1033,Operations,26,3.5,Male,Hyderabad,Hassan Malik,Manager,2,5,1,3,2,3,1,1,1,1,1,5,5,3,3,4,3,4,2,4,2,1,3,1,5,2,1,4,2,4,2,2,4,3,1,4,5,5,4,4,4,1,4,4,1,2,5,1,1,2,5
+34,EMP1034,Supply Chain,22,3.9,Prefer not to say,Rawalpindi,Usman Tariq,Team Lead,4,5,3,5,4,1,1,4,3,4,1,5,3,5,5,5,3,3,3,1,5,3,4,5,1,1,4,1,5,1,3,4,4,3,3,5,4,5,3,4,3,4,5,3,2,4,3,4,3,1,4
+35,EMP1035,R&D,52,5.3,Female,Karachi,Omar Farooq,Senior Individual Contributor,2,4,1,4,2,1,4,2,2,4,1,5,5,2,3,1,3,1,2,3,2,3,4,4,1,4,2,4,5,3,3,5,5,5,5,5,4,5,2,5,1,2,1,1,4,1,1,4,2,5,1
+36,EMP1036,Customer Support,38,18.5,Male,Lahore,Sana Rizvi,Senior Manager,5,4,1,1,5,4,4,3,5,4,4,1,1,4,3,4,1,2,5,1,3,5,5,2,3,1,2,4,3,3,3,1,3,1,5,1,3,2,4,2,4,3,3,1,4,1,4,5,1,2,3
+37,EMP1037,Operations,40,4.8,Female,Faisalabad,Hassan Malik,Manager,2,2,1,1,5,4,2,4,3,3,1,4,4,1,2,1,3,5,1,1,5,5,5,5,2,2,3,5,4,2,4,3,1,3,2,1,3,3,5,2,1,4,2,5,5,2,5,4,3,1,3
+38,EMP1038,Marketing,25,0.4,Male,Peshawar,Fatima Noor,Individual Contributor,5,3,2,4,3,5,4,5,4,2,2,3,4,3,5,1,1,4,4,3,3,1,1,2,3,3,2,3,3,4,2,3,4,1,2,3,2,3,3,5,1,1,2,5,2,1,5,2,4,5,4
+39,EMP1039,People & Culture,54,2.0,Female,Hyderabad,Ayesha Khan,Senior Individual Contributor,3,2,3,1,3,4,1,5,4,5,1,3,2,2,4,4,1,4,3,3,5,3,1,3,4,5,1,1,4,2,2,4,3,5,4,3,5,5,5,5,5,3,1,4,5,1,1,3,1,5,1
+40,EMP1040,Finance,58,6.2,Male,Hyderabad,Naveed Iqbal,Senior Manager,4,4,1,2,5,1,4,3,2,2,3,2,4,5,1,5,2,4,1,3,3,5,4,3,5,1,4,2,4,5,5,1,2,1,1,5,4,5,2,5,2,3,3,3,1,4,4,2,1,1,3
+41,EMP1041,Legal,58,13.1,Prefer not to say,Karachi,Hira Shah,Manager,1,1,3,5,3,3,5,1,3,3,5,4,1,4,3,2,3,1,4,5,4,4,4,3,5,1,3,4,4,5,3,1,5,1,3,2,1,4,4,3,2,4,5,5,1,5,3,5,4,5,5
+42,EMP1042,IT,47,3.3,Male,Islamabad,Sara Ahmed,Individual Contributor,2,2,4,4,4,3,5,2,1,1,3,4,3,1,1,2,4,2,4,2,3,4,2,2,4,4,4,5,3,1,1,1,3,1,4,2,4,4,2,3,3,4,1,4,2,3,5,3,1,4,3
+43,EMP1043,R&D,58,24.9,Female,Karachi,Omar Farooq,Senior Manager,5,2,4,5,1,3,1,3,2,3,4,1,3,4,1,4,1,1,2,5,4,1,3,2,3,3,2,4,4,4,4,2,4,4,5,5,3,5,4,3,1,4,1,3,5,3,1,5,3,2,4
+44,EMP1044,Marketing,26,7.0,Female,Karachi,Hira Shah,Senior Manager,4,1,1,4,4,5,4,2,4,3,5,5,4,5,3,5,1,3,1,5,5,5,2,2,1,4,5,5,4,3,4,5,2,5,2,1,2,2,5,4,2,4,4,5,2,2,5,5,2,3,4
+45,EMP1045,Supply Chain,22,2.7,Male,Peshawar,Usman Tariq,Individual Contributor,4,3,2,3,3,5,4,4,1,4,5,4,1,4,1,5,2,4,1,3,5,3,4,1,2,5,2,5,1,5,3,1,5,3,4,5,5,4,1,5,2,2,2,2,3,1,1,5,1,2,2
+46,EMP1046,IT,29,9.8,Male,Karachi,Naveed Iqbal,Senior Manager,1,4,4,3,5,1,3,1,3,5,5,3,3,5,1,5,3,4,2,1,3,2,2,2,3,1,1,4,4,5,4,2,1,4,3,5,1,1,3,1,1,2,1,1,3,4,2,2,3,1,3
+47,EMP1047,Operations,43,5.1,Male,Lahore,Usman Tariq,Team Lead,1,3,3,3,5,4,3,2,3,3,2,3,3,5,1,4,4,1,1,2,2,3,2,4,2,2,3,3,5,1,3,3,5,3,5,1,3,5,4,4,2,1,2,4,3,4,2,3,1,1,1
+48,EMP1048,People & Culture,27,5.7,Male,Karachi,Mariam Siddiqui,Senior Individual Contributor,3,4,1,5,4,4,3,2,4,4,2,2,1,1,3,2,5,5,1,4,5,5,5,2,1,1,2,2,2,2,5,5,2,4,2,4,3,5,3,1,5,5,4,2,3,4,2,3,2,1,1
+49,EMP1049,IT,32,10.4,Male,Lahore,Sara Ahmed,Manager,2,1,3,1,4,3,4,1,2,4,4,4,5,5,3,3,3,5,2,4,3,1,2,1,1,5,2,4,2,4,1,4,4,1,5,3,4,4,5,1,5,2,4,5,3,5,1,2,3,1,5
+50,EMP1050,Finance,31,7.1,Male,Hyderabad,Ali Raza,Manager,3,4,5,5,2,4,1,2,1,3,5,5,4,3,3,1,2,2,4,4,3,5,2,2,2,2,5,5,1,1,2,4,5,1,3,4,5,4,1,4,1,1,5,4,5,4,1,3,4,5,5
+51,EMP1051,Sales,24,1.8,Male,Faisalabad,Bilal Hussain,Senior Individual Contributor,1,2,4,5,4,2,5,2,4,1,3,1,4,5,5,1,2,3,4,3,2,3,4,5,5,3,4,3,1,2,4,5,3,1,2,4,3,1,3,1,1,2,4,4,4,5,4,1,5,1,4
+52,EMP1052,Operations,37,12.7,Female,Hyderabad,Usman Tariq,Director,5,3,1,1,1,1,1,4,3,1,3,3,4,3,4,2,4,3,2,4,2,2,3,4,1,2,3,4,2,5,2,4,5,2,2,5,3,2,3,3,5,2,2,1,2,1,2,5,2,4,1
+53,EMP1053,Sales,37,16.4,Non-binary,Rawalpindi,Omar Farooq,Senior Manager,3,3,5,5,4,2,1,1,2,2,5,5,5,5,4,4,3,5,1,2,3,4,1,5,4,2,3,4,2,1,1,4,4,5,3,2,5,2,2,4,5,2,4,4,2,2,2,4,5,3,1
+54,EMP1054,Sales,43,19.6,Female,Multan,Hamza Qureshi,Senior Manager,3,1,1,2,1,3,2,3,3,5,5,3,4,5,1,1,5,1,1,2,4,2,3,5,1,5,4,3,5,5,2,4,3,1,4,5,3,3,2,2,2,1,4,1,2,4,3,3,5,5,4
+55,EMP1055,IT,32,11.0,Female,Rawalpindi,Naveed Iqbal,Manager,1,1,3,1,4,5,1,2,3,2,2,2,3,1,3,3,3,3,4,4,5,1,4,2,2,1,5,5,2,2,3,3,1,1,1,5,2,4,5,1,5,5,4,3,5,1,3,3,1,1,3
+56,EMP1056,Operations,51,8.7,Male,Rawalpindi,Hassan Malik,Team Lead,4,1,3,3,2,2,2,3,3,2,1,2,5,2,2,4,5,4,3,3,3,1,5,3,2,3,2,5,3,4,2,1,2,5,2,3,5,4,4,3,1,4,1,4,1,1,1,1,3,4,5
+57,EMP1057,Operations,47,8.2,Male,Peshawar,Usman Tariq,Manager,3,2,5,5,5,4,5,1,2,2,4,1,1,2,3,1,3,1,5,4,1,2,1,5,5,4,3,2,3,2,3,2,2,4,5,5,1,3,3,4,5,4,5,4,5,2,5,1,4,1,4
+58,EMP1058,Supply Chain,47,17.0,Male,Lahore,Usman Tariq,Senior Manager,5,4,4,4,2,4,2,5,1,3,2,1,4,3,3,2,1,4,4,4,2,2,2,5,2,2,1,5,5,5,5,4,3,2,2,2,1,2,3,4,3,2,2,1,3,1,3,4,3,3,3
+59,EMP1059,IT,33,8.7,Non-binary,Karachi,Naveed Iqbal,Manager,3,1,2,3,3,4,3,3,3,2,5,1,1,1,5,3,5,5,4,1,2,4,1,4,5,5,1,1,4,5,3,2,1,1,2,1,2,2,2,2,5,5,4,4,3,5,5,1,2,2,4
+60,EMP1060,Marketing,49,15.2,Male,Lahore,Fatima Noor,Director,4,4,4,2,1,3,3,2,4,1,1,4,3,4,1,3,3,1,2,3,2,4,5,2,3,5,3,5,5,3,5,5,5,4,5,1,3,4,2,1,4,1,4,5,1,2,3,5,3,5,5
+61,EMP1061,People & Culture,49,0.0,Prefer not to say,Islamabad,Ayesha Khan,Individual Contributor,2,2,2,2,2,2,4,4,2,1,2,1,3,4,4,1,1,2,1,3,1,5,1,2,4,4,2,5,5,3,1,3,2,4,2,3,4,2,5,1,1,5,3,3,3,5,1,5,1,4,1
+62,EMP1062,Marketing,49,1.7,Male,Lahore,Hira Shah,Individual Contributor,5,5,2,4,2,1,3,3,5,1,1,5,3,1,5,5,2,3,4,3,3,3,5,1,2,4,1,3,2,3,1,2,1,4,3,2,2,5,5,2,1,2,1,3,5,4,2,4,3,5,3
+63,EMP1063,IT,54,7.7,Female,Lahore,Naveed Iqbal,Senior Manager,5,3,2,5,2,4,4,4,4,2,1,3,2,1,2,2,2,1,5,3,2,3,2,4,3,4,1,5,3,4,3,1,2,5,5,5,1,2,2,4,5,2,4,4,1,1,5,1,2,3,2
+64,EMP1064,Sales,34,6.7,Prefer not to say,Multan,Bilal Hussain,Senior Manager,5,4,3,4,4,1,3,5,2,4,2,3,3,1,5,2,5,4,1,1,3,2,1,4,4,5,4,2,3,1,4,5,4,3,3,3,3,5,4,2,2,1,1,1,3,3,4,5,2,3,5
+65,EMP1065,Legal,41,9.3,Male,Lahore,Iqra Abbas,Manager,3,1,4,3,5,1,3,1,3,5,4,3,5,1,4,3,2,2,4,1,3,2,5,4,1,2,3,2,2,2,4,5,5,4,4,5,1,1,3,2,2,1,2,2,5,3,5,1,4,2,5
+66,EMP1066,Legal,60,16.4,Male,Lahore,Iqra Abbas,VP,2,2,5,4,4,4,2,5,1,3,5,5,5,1,2,1,4,4,4,4,4,5,5,3,5,2,5,1,4,2,2,2,4,2,2,2,3,2,1,2,5,2,3,1,3,3,5,3,1,1,5
+67,EMP1067,R&D,32,9.2,Female,Multan,Omar Farooq,Team Lead,4,1,4,5,3,4,4,5,4,5,5,4,3,5,2,1,4,1,4,1,1,3,4,2,1,5,2,2,1,5,1,3,3,1,5,1,1,1,2,2,4,5,4,5,4,5,3,2,3,5,1
+68,EMP1068,Operations,41,5.2,Female,Karachi,Hassan Malik,Team Lead,3,3,2,5,3,5,3,1,1,1,1,5,5,4,4,1,1,5,2,1,3,4,4,1,4,5,3,2,5,1,1,2,2,1,1,5,2,1,5,2,4,2,4,1,5,5,5,2,3,5,2
+69,EMP1069,Legal,26,3.6,Male,Hyderabad,Hira Shah,Team Lead,1,4,3,4,5,3,5,3,5,1,2,3,5,2,4,2,1,3,2,4,2,5,4,2,5,4,2,1,2,1,5,4,1,2,2,5,3,1,1,2,2,5,2,3,4,5,1,3,3,2,1
+70,EMP1070,Customer Support,37,2.8,Male,Rawalpindi,Zainab Ali,Senior Individual Contributor,4,1,4,1,2,3,3,5,4,2,3,3,3,1,1,3,1,2,4,4,1,2,5,1,5,4,2,3,4,5,3,4,4,1,5,3,4,5,3,3,1,2,1,3,1,2,1,2,2,2,1
+71,EMP1071,Operations,33,12.1,Male,Islamabad,Hassan Malik,Manager,5,2,1,4,1,1,1,2,4,1,1,5,4,3,5,5,1,4,3,4,2,4,1,5,2,4,4,2,4,1,3,4,4,4,4,2,5,2,3,3,1,5,4,5,5,4,3,5,2,4,3
+72,EMP1072,R&D,30,9.6,Male,Peshawar,Omar Farooq,Manager,1,4,3,4,4,1,3,1,3,3,5,4,4,1,3,1,3,2,3,2,2,3,1,4,4,4,4,2,5,1,3,3,4,5,4,2,4,3,5,5,5,3,5,2,5,2,4,5,5,1,3
+73,EMP1073,Legal,54,10.7,Prefer not to say,Lahore,Iqra Abbas,Director,3,1,1,4,5,4,4,3,2,3,3,1,5,4,5,4,1,5,1,3,4,5,1,1,4,3,3,1,1,5,1,3,3,4,2,4,5,2,2,3,1,2,4,2,2,2,5,1,5,1,3
+74,EMP1074,R&D,50,6.5,Female,Hyderabad,Omar Farooq,Senior Manager,5,3,2,4,2,5,2,4,1,5,4,2,5,1,1,2,3,5,1,5,3,2,3,2,3,5,3,1,5,2,3,3,2,4,2,3,3,3,1,4,3,2,5,3,5,2,1,1,5,5,2
+75,EMP1075,Operations,39,9.2,Male,Karachi,Usman Tariq,Manager,5,1,5,5,3,5,1,4,5,1,5,5,1,3,2,3,4,4,3,1,5,3,4,4,2,2,3,3,4,4,1,2,1,4,2,4,2,2,4,2,4,1,1,2,4,5,3,1,3,3,1
+76,EMP1076,Supply Chain,27,1.2,Female,Multan,Usman Tariq,Individual Contributor,3,4,1,3,3,3,2,5,3,1,3,1,5,5,3,5,5,3,1,1,2,4,5,2,1,4,5,5,3,3,4,1,1,4,4,1,5,2,4,5,3,1,5,1,2,3,2,3,4,5,2
+77,EMP1077,Finance,48,10.2,Male,Lahore,Ali Raza,Senior Manager,5,2,1,4,5,1,1,2,4,1,5,3,3,4,3,5,1,4,4,5,2,3,5,1,3,4,5,3,5,3,4,4,4,4,5,5,2,3,5,5,2,2,2,4,2,5,2,1,3,1,1
+78,EMP1078,Customer Support,59,23.7,Female,Rawalpindi,Sana Rizvi,Director,1,2,5,3,4,5,2,4,3,4,3,2,2,3,1,4,3,3,5,5,1,5,4,2,3,2,1,2,2,4,1,1,3,5,1,5,4,1,5,4,4,2,1,3,5,3,3,1,5,1,2
+79,EMP1079,People & Culture,44,7.5,Female,Rawalpindi,Mariam Siddiqui,Senior Manager,3,5,2,4,5,4,2,4,5,3,3,5,2,1,1,1,2,5,3,4,2,5,1,3,4,5,1,3,5,5,3,3,2,3,4,3,1,2,2,1,1,4,1,5,5,3,3,2,5,1,5
+80,EMP1080,Supply Chain,60,22.4,Male,Lahore,Hassan Malik,Senior Manager,2,1,4,3,4,2,4,4,4,5,5,5,1,5,4,5,1,2,2,3,1,5,2,3,5,2,1,1,3,3,1,3,5,4,5,3,4,1,2,4,4,1,5,2,3,1,4,3,4,2,2
+81,EMP1081,Customer Support,43,16.7,Male,Multan,Sana Rizvi,Senior Manager,1,5,5,3,1,2,3,2,4,5,2,3,2,1,2,4,2,2,2,1,1,4,2,1,4,4,5,1,4,1,1,3,5,3,5,2,3,2,4,5,2,1,2,2,1,3,4,4,4,2,1
+82,EMP1082,Legal,56,0.7,Female,Hyderabad,Iqra Abbas,Individual Contributor,1,2,3,4,1,3,3,5,2,2,2,4,4,1,5,5,3,3,4,5,3,4,5,3,2,3,3,5,1,2,1,3,2,4,1,2,3,1,4,4,2,2,4,1,3,3,5,4,1,1,1
+83,EMP1083,Finance,49,3.4,Male,Karachi,Naveed Iqbal,Senior Individual Contributor,1,4,1,2,1,3,2,1,2,5,4,2,4,1,4,5,4,5,4,2,5,2,2,5,3,2,5,1,3,3,3,5,5,1,5,3,3,4,1,4,4,1,1,5,5,2,1,2,5,2,2
+84,EMP1084,Operations,51,8.2,Male,Lahore,Usman Tariq,Manager,4,2,5,4,4,5,1,5,4,3,1,2,1,5,5,1,3,3,1,3,1,5,5,2,2,4,1,3,1,5,5,5,4,2,3,5,3,1,5,5,1,3,2,5,3,4,3,2,1,1,5
+85,EMP1085,Finance,52,0.5,Male,Peshawar,Naveed Iqbal,Individual Contributor,1,1,2,4,4,4,1,1,5,4,1,1,1,5,4,2,3,3,3,5,3,3,5,1,5,3,5,5,5,3,3,2,4,1,5,4,3,1,3,5,1,5,2,5,1,1,1,3,1,1,3
+86,EMP1086,Operations,26,6.2,Male,Faisalabad,Hassan Malik,Team Lead,5,4,4,1,1,4,1,4,3,3,4,2,4,3,2,1,3,3,3,1,3,4,1,1,2,3,2,4,1,2,1,2,5,5,3,4,1,5,4,1,2,2,1,4,3,4,1,2,3,2,1
+87,EMP1087,People & Culture,31,3.1,Male,Karachi,Ayesha Khan,Senior Individual Contributor,4,4,4,3,1,1,4,1,4,4,1,1,2,3,4,3,5,4,2,1,1,2,2,2,3,1,5,3,4,3,3,1,2,1,2,2,3,1,5,1,2,1,2,1,3,2,5,5,2,5,4
+88,EMP1088,IT,45,4.2,Male,Faisalabad,Sara Ahmed,Senior Individual Contributor,3,5,4,1,4,5,4,5,2,1,5,3,2,5,2,3,5,1,2,1,4,1,3,1,2,2,2,3,5,3,3,2,5,2,4,4,5,5,5,5,5,5,5,3,5,5,3,2,2,1,3
+89,EMP1089,IT,28,5.8,Prefer not to say,Hyderabad,Naveed Iqbal,Team Lead,3,4,3,2,3,4,4,2,1,5,4,1,3,3,2,1,3,2,5,3,3,3,2,2,4,3,4,2,3,4,1,3,3,5,5,1,5,3,1,4,3,5,3,3,4,4,5,1,5,5,1
+90,EMP1090,Operations,26,4.7,Male,Karachi,Usman Tariq,Manager,5,5,3,5,2,5,1,3,5,4,5,3,4,3,4,4,5,5,2,2,4,2,2,3,1,3,5,3,1,3,3,2,1,4,1,2,1,4,3,4,1,2,2,1,2,5,2,2,2,5,1
+91,EMP1091,Legal,29,8.8,Male,Karachi,Hira Shah,Senior Manager,2,1,4,3,2,1,3,2,1,4,4,4,3,3,4,5,5,2,1,5,3,3,1,3,5,3,3,5,1,4,2,1,4,3,3,2,2,4,2,5,3,4,4,2,2,2,5,1,4,1,4
+92,EMP1092,Marketing,26,4.0,Female,Rawalpindi,Hira Shah,Senior Individual Contributor,3,2,5,4,5,2,4,5,4,5,4,4,2,5,3,4,1,2,5,5,1,5,1,4,1,1,4,2,4,1,3,1,2,3,3,3,3,5,2,1,4,2,5,2,3,1,4,3,4,4,5
+93,EMP1093,Customer Support,45,15.9,Male,Multan,Sana Rizvi,Senior Manager,1,2,1,2,2,3,4,5,4,2,1,2,3,2,3,4,5,1,3,2,2,1,2,5,4,4,1,5,3,5,5,1,5,2,2,1,4,4,3,2,3,5,1,2,2,5,4,5,5,2,3
+94,EMP1094,Supply Chain,39,12.9,Prefer not to say,Faisalabad,Hassan Malik,Senior Manager,3,4,2,1,2,5,5,5,3,4,4,4,3,4,5,4,2,1,1,5,3,2,5,4,2,5,4,3,4,2,1,1,1,1,4,2,5,5,1,2,2,4,5,2,3,1,1,3,2,3,1
+95,EMP1095,Legal,39,6.8,Female,Peshawar,Hira Shah,Manager,4,1,1,3,1,4,1,2,5,4,3,4,1,3,2,1,5,3,5,1,1,4,1,5,5,3,3,2,5,2,2,4,4,4,5,4,1,5,3,5,4,1,2,5,2,4,3,4,2,3,5
+96,EMP1096,Operations,51,14.2,Male,Lahore,Usman Tariq,Senior Manager,5,4,2,5,5,3,1,3,2,2,4,3,1,4,1,5,3,1,1,5,2,1,1,5,4,3,5,1,2,5,1,3,4,1,3,3,3,4,4,2,5,4,4,5,1,3,2,1,2,2,1
+97,EMP1097,Sales,53,5.3,Male,Lahore,Hamza Qureshi,Manager,3,4,3,2,4,5,1,1,4,5,2,4,2,5,3,2,2,4,4,4,5,4,4,1,3,3,3,1,1,2,3,5,5,4,5,1,5,1,5,1,1,3,1,2,1,1,2,1,2,2,3
+98,EMP1098,IT,57,0.3,Prefer not to say,Karachi,Naveed Iqbal,Individual Contributor,1,2,5,3,1,1,1,5,3,5,1,1,1,4,4,4,5,5,5,5,1,4,1,5,1,2,2,5,4,3,4,5,4,2,2,2,3,1,3,5,3,4,3,5,1,2,4,5,3,1,2
+99,EMP1099,R&D,57,19.0,Male,Hyderabad,Omar Farooq,Director,5,5,1,4,5,1,1,1,2,2,1,2,5,3,1,1,1,3,1,4,2,4,5,1,4,3,4,5,3,5,1,1,1,5,5,1,2,5,1,3,5,5,2,3,5,3,2,5,3,1,1
+100,EMP1100,People & Culture,27,2.6,Female,Karachi,Mariam Siddiqui,Senior Individual Contributor,3,5,5,3,4,2,4,5,5,2,5,3,3,3,5,3,4,2,4,3,5,3,2,4,5,3,2,1,3,1,3,2,1,5,3,3,4,2,2,2,2,3,1,4,5,4,1,5,1,3,4
+101,EMP1101,Supply Chain,55,8.6,Non-binary,Hyderabad,Hassan Malik,Senior Manager,5,2,1,1,1,5,1,5,4,1,1,1,2,1,1,3,5,3,3,5,4,3,1,2,2,4,5,5,5,4,4,5,2,4,3,5,2,1,4,1,5,3,3,4,3,1,4,1,2,1,1
+102,EMP1102,R&D,39,6.4,Female,Multan,Omar Farooq,Team Lead,1,5,2,3,4,3,2,5,4,5,3,3,4,1,2,2,5,5,4,4,4,2,4,1,4,2,3,4,3,1,5,4,4,5,2,3,5,5,3,5,3,2,5,1,1,4,1,4,1,1,3
+103,EMP1103,Supply Chain,33,2.9,Male,Lahore,Hassan Malik,Individual Contributor,3,2,5,2,2,5,2,4,5,1,2,2,5,1,1,1,4,3,3,3,2,5,4,4,3,5,3,1,4,1,2,2,2,1,2,1,3,4,5,1,3,5,5,1,4,3,1,4,3,1,4
+104,EMP1104,Operations,40,5.0,Female,Karachi,Hassan Malik,Team Lead,4,1,3,3,5,2,5,1,2,3,1,1,4,2,1,4,1,2,3,5,5,4,2,2,4,1,4,5,4,2,2,3,3,2,1,3,5,5,5,3,1,5,4,2,3,1,1,2,3,3,1
+105,EMP1105,People & Culture,25,3.9,Male,Karachi,Mariam Siddiqui,Senior Individual Contributor,3,5,1,2,1,5,4,2,1,4,4,1,3,5,3,5,2,3,2,3,4,3,1,3,5,1,1,1,1,2,3,2,5,1,2,3,5,3,4,2,3,1,1,1,1,2,1,2,3,5,4
+106,EMP1106,People & Culture,58,7.1,Male,Lahore,Ayesha Khan,Manager,5,4,4,2,3,3,3,3,1,4,5,2,2,1,2,4,5,3,2,1,2,3,2,4,3,3,5,4,2,5,2,3,2,5,1,2,3,4,1,4,1,3,1,3,4,5,3,2,2,2,1
+107,EMP1107,R&D,29,9.0,Female,Karachi,Sara Ahmed,Team Lead,1,4,1,1,1,3,1,1,1,5,3,1,4,3,2,3,1,1,4,3,5,4,2,5,1,3,4,5,4,3,3,4,5,2,4,1,1,3,1,2,2,3,2,5,4,2,4,3,2,5,3
+108,EMP1108,Sales,58,23.7,Female,Karachi,Hamza Qureshi,Director,2,5,2,1,2,3,1,4,2,1,3,4,2,4,4,5,1,4,3,3,1,5,1,3,3,3,5,3,5,2,2,3,1,4,2,3,4,5,2,5,2,1,3,4,5,4,4,3,5,4,5
+109,EMP1109,Legal,60,19.8,Female,Islamabad,Hira Shah,Director,4,5,1,3,5,4,2,3,2,1,3,3,2,2,3,1,3,3,5,4,2,4,4,4,3,2,3,3,5,4,5,2,3,3,5,3,4,4,1,1,5,1,4,3,1,4,1,2,5,2,2
+110,EMP1110,IT,59,24.8,Female,Hyderabad,Sara Ahmed,Senior Manager,2,2,2,1,5,5,1,2,2,5,1,4,5,5,3,3,5,5,2,4,2,5,2,3,4,3,4,5,2,4,3,1,5,2,3,3,3,3,1,3,3,3,5,2,2,4,2,4,1,1,3
+111,EMP1111,Operations,38,13.2,Female,Karachi,Hassan Malik,Manager,1,2,1,5,4,4,3,1,2,3,3,3,1,4,5,2,4,1,2,4,2,5,5,2,1,3,5,2,2,1,2,2,3,2,2,1,4,4,3,3,5,5,5,5,1,4,1,2,4,1,2
+112,EMP1112,People & Culture,48,11.3,Male,Lahore,Ayesha Khan,Senior Manager,3,2,4,4,1,4,4,1,3,1,2,5,2,4,4,2,1,1,3,1,4,5,5,3,2,5,3,4,2,4,2,2,5,4,2,3,5,1,4,1,5,4,3,1,4,1,4,4,1,3,3
+113,EMP1113,IT,51,1.8,Female,Lahore,Sara Ahmed,Senior Individual Contributor,4,5,1,3,5,1,3,1,3,1,3,4,5,4,3,3,5,1,3,2,3,1,4,3,1,5,4,1,2,2,1,5,4,1,3,2,2,5,1,1,2,4,3,5,2,3,4,1,2,2,3
+114,EMP1114,Finance,56,5.6,Female,Lahore,Ali Raza,Senior Individual Contributor,5,4,4,4,1,5,1,1,3,3,3,5,3,4,5,2,1,4,3,1,1,5,4,2,3,2,4,2,1,3,3,4,4,1,5,4,2,4,5,5,5,1,2,2,3,1,4,4,3,1,4
+115,EMP1115,People & Culture,32,11.1,Male,Rawalpindi,Mariam Siddiqui,Senior Manager,5,2,3,2,4,4,1,2,2,3,1,1,3,1,3,4,5,1,2,3,3,3,5,3,1,5,1,1,3,5,3,1,1,3,5,3,3,2,4,2,4,5,3,1,1,3,5,5,1,5,1
+116,EMP1116,Finance,51,17.2,Male,Peshawar,Naveed Iqbal,Director,4,4,5,4,5,5,1,2,5,5,3,1,1,2,2,1,4,4,2,5,1,2,3,5,4,1,2,2,2,2,2,2,4,2,4,1,3,4,2,3,1,2,5,3,3,3,5,2,1,4,4
+117,EMP1117,Finance,60,1.0,Female,Lahore,Naveed Iqbal,Individual Contributor,1,2,1,1,5,2,4,1,4,2,3,2,4,3,4,1,3,4,1,2,3,3,5,4,5,3,4,4,5,4,1,3,2,4,3,1,1,2,4,3,2,3,1,4,1,4,2,4,4,5,4
+118,EMP1118,People & Culture,27,2.1,Male,Rawalpindi,Ayesha Khan,Senior Individual Contributor,1,5,4,4,2,2,2,1,4,3,5,3,4,4,4,4,4,5,5,4,2,1,3,3,1,5,2,1,1,3,2,2,1,4,1,5,5,2,2,2,4,3,5,3,1,4,1,5,1,2,5
+119,EMP1119,Legal,24,4.6,Female,Islamabad,Hira Shah,Team Lead,2,5,3,3,2,4,2,3,3,5,2,1,1,1,2,2,1,4,2,1,2,2,3,3,4,5,5,1,5,5,2,2,3,2,5,4,4,2,5,3,2,2,4,3,1,1,1,5,2,3,5
+120,EMP1120,Sales,59,10.9,Male,Peshawar,Omar Farooq,Senior Manager,2,5,1,3,4,1,4,2,3,4,3,4,5,1,5,1,5,2,2,3,1,4,2,5,5,3,3,3,5,2,2,3,4,3,2,4,1,4,3,2,5,2,5,5,3,3,3,3,5,1,4
+121,EMP1121,Customer Support,43,8.0,Female,Karachi,Sana Rizvi,Senior Manager,3,5,5,5,1,4,3,2,1,2,3,2,5,1,3,5,1,3,3,1,1,2,1,2,3,1,4,3,1,5,2,1,3,1,1,5,3,2,2,5,4,2,2,4,2,5,2,1,4,3,5
+122,EMP1122,R&D,40,14.6,Female,Faisalabad,Sara Ahmed,Senior Manager,4,3,3,4,1,4,4,5,3,2,1,2,2,5,1,1,3,1,3,1,5,5,3,2,3,3,4,2,2,1,2,2,4,3,4,5,2,4,2,2,5,1,5,2,3,4,4,5,2,3,2
+123,EMP1123,Finance,42,6.1,Female,Faisalabad,Ali Raza,Senior Manager,4,2,5,4,2,2,3,4,1,4,5,5,2,1,3,3,1,5,3,2,5,1,3,1,2,3,2,2,4,1,1,2,1,1,3,5,4,1,2,3,2,5,1,2,3,4,2,4,4,3,2
+124,EMP1124,Supply Chain,51,10.3,Female,Lahore,Hassan Malik,Director,1,3,5,5,4,2,1,4,5,3,3,1,5,1,3,5,3,4,4,1,2,4,3,5,2,3,2,1,4,3,1,3,4,5,4,2,3,1,3,4,5,5,2,5,1,4,5,1,5,4,4
+125,EMP1125,R&D,25,1.4,Male,Peshawar,Omar Farooq,Individual Contributor,4,4,3,1,5,4,4,2,1,5,1,4,1,4,1,2,2,5,1,3,1,1,5,2,5,2,4,3,2,3,2,5,2,1,5,2,4,3,5,5,1,4,5,3,5,2,3,2,5,1,4
+126,EMP1126,R&D,29,0.3,Male,Faisalabad,Sara Ahmed,Individual Contributor,5,3,2,5,3,1,3,3,3,1,5,4,1,1,1,4,3,2,1,3,2,2,1,2,1,3,3,2,5,1,4,4,3,4,4,4,4,5,5,5,1,1,3,1,2,4,4,3,4,4,5
+127,EMP1127,IT,57,0.3,Female,Karachi,Sara Ahmed,Individual Contributor,3,1,2,5,2,2,1,5,2,4,1,1,3,3,4,4,3,5,2,5,5,3,2,2,2,4,1,1,2,3,5,5,4,5,2,2,5,3,3,2,2,1,3,5,1,1,3,4,5,3,1
+128,EMP1128,R&D,29,7.1,Female,Peshawar,Omar Farooq,Senior Manager,3,1,1,5,4,3,1,5,5,2,3,3,1,5,5,1,4,3,2,3,5,5,3,2,3,5,2,4,4,4,4,5,2,3,1,4,5,2,3,4,3,4,4,1,5,1,2,1,1,3,1
+129,EMP1129,IT,48,20.9,Non-binary,Karachi,Sara Ahmed,Director,5,2,4,5,5,2,5,3,4,3,1,3,5,3,4,3,5,4,3,1,1,5,2,4,3,1,3,4,2,5,4,4,2,1,4,4,2,4,4,1,3,4,1,2,1,2,4,4,3,3,1
+130,EMP1130,Operations,60,12.7,Male,Rawalpindi,Usman Tariq,Senior Manager,1,4,5,4,3,5,3,1,5,2,2,1,5,5,4,3,1,1,5,4,4,5,4,3,4,5,4,1,1,2,4,2,5,3,3,5,3,1,3,3,5,1,5,2,2,1,5,1,4,3,3
+131,EMP1131,Marketing,54,6.7,Female,Multan,Hira Shah,Team Lead,4,5,4,5,4,5,3,1,2,3,4,5,3,4,3,3,2,1,2,5,2,3,1,1,2,1,3,4,5,3,1,5,4,5,5,1,3,2,4,5,2,5,3,5,5,3,5,5,2,4,2
+132,EMP1132,R&D,56,12.1,Female,Faisalabad,Omar Farooq,Senior Manager,5,1,2,1,5,4,5,4,1,2,1,3,1,5,1,4,3,1,3,4,3,5,2,1,4,5,5,5,2,2,2,2,4,4,1,2,4,3,4,5,4,5,2,3,4,4,3,2,3,1,1
+133,EMP1133,Marketing,34,15.7,Female,Lahore,Hira Shah,Senior Manager,2,2,3,1,1,2,4,1,2,4,5,5,2,2,3,2,2,2,2,5,4,2,4,4,4,1,5,5,5,1,4,5,2,5,4,4,5,4,3,5,1,4,4,2,1,3,3,1,5,2,2
+134,EMP1134,Marketing,52,17.6,Male,Lahore,Fatima Noor,Director,5,1,3,5,5,4,1,3,1,3,4,5,2,4,1,2,1,3,2,2,4,4,2,3,1,1,5,4,4,1,3,5,3,2,4,3,2,2,1,2,2,5,2,3,3,1,1,3,2,4,1
+135,EMP1135,People & Culture,30,6.0,Male,Rawalpindi,Mariam Siddiqui,Team Lead,5,5,4,5,2,5,3,1,4,4,1,4,3,2,4,3,4,2,1,4,3,1,4,4,4,1,5,4,3,3,3,3,3,4,5,3,2,5,5,2,2,3,2,1,4,4,2,3,2,2,3
+136,EMP1136,Supply Chain,51,0.4,Female,Rawalpindi,Usman Tariq,Individual Contributor,4,3,4,2,1,4,2,5,2,5,1,2,2,3,4,1,2,2,3,2,5,2,3,3,3,3,4,3,2,4,1,4,2,4,5,4,3,3,4,4,4,4,1,3,4,1,2,4,2,4,4
+137,EMP1137,Finance,52,19.5,Female,Hyderabad,Naveed Iqbal,VP,2,1,3,1,5,5,3,5,2,2,1,3,5,1,5,4,2,5,5,1,5,5,4,5,5,2,1,1,1,3,2,1,3,1,1,2,4,5,2,4,2,2,5,1,2,2,1,5,2,5,3
+138,EMP1138,Finance,43,21.3,Male,Lahore,Naveed Iqbal,VP,5,5,4,4,2,4,1,2,5,3,3,5,2,1,2,5,4,2,5,3,2,1,4,3,1,4,2,5,4,4,5,3,5,1,1,3,1,5,3,2,4,4,1,2,5,4,4,2,1,2,5
+139,EMP1139,R&D,56,0.9,Female,Hyderabad,Omar Farooq,Individual Contributor,3,1,4,3,1,4,4,5,5,3,2,1,1,1,3,2,2,1,4,3,1,5,4,4,1,3,4,4,5,2,3,3,1,2,3,3,4,1,1,5,4,5,1,3,4,2,2,1,1,3,3
+140,EMP1140,Operations,27,3.9,Female,Hyderabad,Hassan Malik,Team Lead,3,3,2,3,5,1,4,3,1,1,5,2,2,4,2,2,3,4,3,2,1,1,2,4,5,4,4,1,3,1,3,4,3,1,1,5,1,1,5,4,5,4,2,2,1,2,1,1,2,3,4
+141,EMP1141,Sales,41,20.8,Female,Faisalabad,Omar Farooq,Director,4,3,5,1,1,3,3,2,1,4,5,5,5,5,4,1,1,1,5,2,2,2,2,2,4,4,1,4,5,5,1,3,1,5,3,1,5,3,5,4,3,4,5,2,3,5,2,3,5,4,1
+142,EMP1142,Marketing,49,3.6,Male,Hyderabad,Fatima Noor,Senior Individual Contributor,2,2,4,2,2,3,4,3,3,1,2,1,5,5,4,5,5,3,1,4,4,4,3,5,3,5,3,2,3,4,3,2,4,1,5,2,4,3,4,3,2,3,5,4,1,1,3,5,3,5,1
+143,EMP1143,Sales,27,5.5,Female,Multan,Omar Farooq,Manager,3,2,5,5,2,4,5,3,3,2,3,3,3,2,5,1,3,5,2,4,2,5,3,5,2,2,2,4,5,5,5,1,1,1,2,5,5,3,3,4,4,2,1,3,1,5,1,1,4,5,1
+144,EMP1144,Sales,36,8.3,Female,Lahore,Bilal Hussain,Manager,5,1,4,1,4,2,3,4,1,3,5,4,5,5,3,1,1,3,4,2,2,4,5,1,2,4,2,4,4,4,3,5,4,3,2,4,3,3,3,3,2,5,3,2,2,1,5,4,2,3,4
+145,EMP1145,IT,56,3.9,Female,Lahore,Naveed Iqbal,Manager,5,2,4,4,2,1,4,3,1,4,1,4,4,1,4,3,5,2,5,5,2,3,5,4,4,1,5,3,5,2,3,3,5,3,5,1,5,4,4,1,1,5,3,5,4,1,5,5,5,5,5
+146,EMP1146,Customer Support,38,9.1,Female,Peshawar,Sana Rizvi,Team Lead,4,3,1,3,4,4,1,1,5,4,3,5,3,1,1,3,1,4,4,4,2,1,1,4,4,2,3,3,2,1,1,2,5,1,1,5,4,1,4,3,1,5,4,3,5,3,2,4,5,3,3
+147,EMP1147,Operations,46,14.3,Male,Peshawar,Usman Tariq,Manager,5,3,3,3,5,3,1,2,2,4,2,1,1,5,3,2,3,4,4,3,4,2,3,2,2,1,1,3,3,1,1,2,4,2,3,3,5,4,3,2,3,1,4,1,5,2,4,1,2,5,3
+148,EMP1148,Customer Support,39,0.2,Male,Faisalabad,Zainab Ali,Individual Contributor,4,3,2,2,4,3,4,2,4,4,4,2,4,2,5,2,3,1,2,3,2,1,2,4,3,1,2,2,1,5,4,3,3,4,4,3,4,4,1,1,3,4,1,5,3,2,1,1,3,4,2
+149,EMP1149,Legal,53,20.8,Prefer not to say,Faisalabad,Iqra Abbas,VP,5,4,2,3,3,4,3,1,1,4,4,1,5,5,4,2,3,2,4,1,2,5,4,3,3,4,3,3,4,4,4,5,1,4,4,1,1,4,2,2,3,4,2,1,1,2,3,3,2,4,4
+150,EMP1150,Marketing,36,11.5,Male,Multan,Fatima Noor,Director,1,4,3,2,2,1,3,4,2,3,4,4,4,4,2,1,4,2,3,4,3,5,1,2,1,4,4,1,4,3,3,3,4,1,4,4,2,3,2,2,4,5,3,4,1,4,4,5,1,2,2

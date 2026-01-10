@@ -12,6 +12,9 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Register Excel Import Service
+builder.Services.AddScoped<TechnicalAssessmentTask2.Services.ExcelImportService>();
+
 // Add session for authentication
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
@@ -54,7 +57,7 @@ using (var scope = app.Services.CreateScope())
         {
             var testUser = new User
             {
-                Email = "admin",
+                Email = "admin@admin.com",
                 PasswordHash = BCrypt.Net.BCrypt.HashPassword("admin"),
                 FirstName = "Admin",
                 LastName = "User",

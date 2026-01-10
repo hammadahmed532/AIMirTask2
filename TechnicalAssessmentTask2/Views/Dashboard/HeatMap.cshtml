@@ -1,4 +1,5 @@
-﻿@{
+﻿@model TechnicalAssessmentTask2.Models.HeatMapViewModel
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = "Heatmap View";
 }
@@ -12,32 +13,52 @@
         <div class="row g-3 align-items-end">
             <div class="col-md">
                 <label class="form-label small text-muted mb-1">Location</label>
-                <select class="form-select form-select-sm">
-                    <option>All Locations</option>
+                <select class="form-select form-select-sm" name="location" id="locationFilter">
+                    <option value="">All Locations</option>
+                    @foreach (var location in Model.Locations)
+                    {
+                        <option value="@location">@location</option>
+                    }
                 </select>
             </div>
             <div class="col-md">
                 <label class="form-label small text-muted mb-1">Department</label>
-                <select class="form-select form-select-sm">
+                <select class="form-select form-select-sm" name="department" id="departmentFilter">
                     <option>All Departments</option>
+                    @foreach (var department in Model.Departments)
+                    {
+                        <option value="@department">@department</option>
+                    }
                 </select>
             </div>
             <div class="col-md">
                 <label class="form-label small text-muted mb-1">Gender</label>
-                <select class="form-select form-select-sm">
-                    <option>All Genders</option>
+                <select class="form-select form-select-sm" name="Gender" id="GenderFilter">
+                    <option>All Gender</option>
+                    @foreach (var gender in Model.Genders)
+                    {
+                        <option value="@gender">@gender</option>
+                    }
                 </select>
             </div>
             <div class="col-md">
                 <label class="form-label small text-muted mb-1">Tenure</label>
-                <select class="form-select form-select-sm">
-                    <option>All Tenures</option>
+                <select class="form-select form-select-sm" name="Tenure" id="TenuresFilter">
+                    <option>All Tenure</option>
+                    @foreach (var tenure in Model.Tenures)
+                    {
+                        <option value="@tenure.Value">@tenure.Text</option>
+                    }
                 </select>
             </div>
             <div class="col-md">
                 <label class="form-label small text-muted mb-1">Age</label>
-                <select class="form-select form-select-sm">
+                <select class="form-select form-select-sm" name="Age" id="AgesFilter">
                     <option>All Ages</option>
+                    @foreach (var age in Model.Ages)
+                    {
+                        <option value="@age.Value">@age.Text</option>
+                    }
                 </select>
             </div>
             <div class="col-md-auto d-flex gap-2">
