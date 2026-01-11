@@ -29,7 +29,7 @@ namespace TechnicalAssessmentTask2.Controllers
             // If already logged in, redirect to dashboard
             if (HttpContext.Session.GetString("UserId") != null)
             {
-                return RedirectToAction("Index", "Dashboard");
+                return RedirectToAction("HeatMap", "Dashboard");
             }
             return View();
         }
@@ -66,7 +66,7 @@ namespace TechnicalAssessmentTask2.Controllers
                 HttpContext.Session.SetString("RememberMe", "true");
             }
 
-            return RedirectToAction("CommentsReport", "Dashboard");
+            return RedirectToAction("HeatMap", "Dashboard");
         }
 
         public IActionResult Logout()

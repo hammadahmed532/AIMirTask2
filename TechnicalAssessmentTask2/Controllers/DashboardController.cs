@@ -79,8 +79,15 @@ namespace TechnicalAssessmentTask2.Controllers
             ages.Add(new SelectModel { Value = 61, Text = "61-70" });
 
 
+
+            var DataOfCommentsAndWordCloud = getWordCloudData();
+
             var viewModel = new CommentsReportViewModel
             {
+                TotalComments = DataOfCommentsAndWordCloud.TotalComments,
+                Positive= DataOfCommentsAndWordCloud.Positive,
+                Negative= DataOfCommentsAndWordCloud.Negative,
+                RecentComments= DataOfCommentsAndWordCloud.RecentComments,
                 Locations = locations,
                 Departments = departments,
                 Genders = genders,
@@ -89,7 +96,7 @@ namespace TechnicalAssessmentTask2.Controllers
             };
 
 
-            ViewBag.WordCloudData = getWordCloudData();
+            ViewBag.WordCloudData = DataOfCommentsAndWordCloud.WordCloud;
 
             return View(viewModel);
         }
@@ -113,14 +120,14 @@ namespace TechnicalAssessmentTask2.Controllers
             return Json(filteredData);
         }
 
-         
 
-        private List<object[]> getWordCloudData()
+
+        private CommentsReportViewModel getWordCloudData()
         {
             return GetWordCloudDataWithFilters(null, null, null, null, null);
         }
 
-        private List<object[]> GetWordCloudDataWithFilters(string? location, string? department, string? gender, decimal? tenure, int? age)
+        private CommentsReportViewModel GetWordCloudDataWithFilters(string? location, string? department, string? gender, decimal? tenure, int? age)
         {
             var keywords = new List<string>
             {
@@ -179,11 +186,25 @@ namespace TechnicalAssessmentTask2.Controllers
 
             var filteredIds = query.Select(s => s.ID).ToList();
 
-            var allComments = _context.TextAnalyses
+            var filterdComments = _context.TextAnalyses
                                     .AsNoTracking()
                                     .Where(sc => filteredIds.Contains(sc.SurveyID))
-                                    .AsEnumerable()
-                                    .SelectMany(sc => new[]
+                                    .AsEnumerable().ToList();
+
+            var totalComments = filterdComments.Where(a => !string.IsNullOrEmpty(a.OpenEndedStop1)).Count() +
+                 filterdComments.Where(a => !string.IsNullOrEmpty(a.OpenEndedContinue1)).Count() +
+                filterdComments.Where(a => !string.IsNullOrEmpty(a.OpenEndedAnythingElse1)).Count() +
+                filterdComments.Where(a => !string.IsNullOrEmpty(a.OpenEndedStart1)).Count();
+
+            var PositiveCount = (double)filterdComments.Where(a => a.Positive).Count() / filterdComments.Count() * 100.0;
+            var NegativeCount = (double)filterdComments.Where(a => a.Positive == false).Count() / filterdComments.Count()* 100.0;
+             
+            var RecentComments = filterdComments.Where(a => a.Positive == false);
+            var recentCommentsList = filterdComments.Where(a => a.Positive).Take(4).ToList().SelectMany(a=> new RecentComment{CommentText=a.OpenEndedStart1,Positive=a.Positive,SupportingInfo=a.SupportingInfo }).ToList();
+            recentCommentsList.AddRange(filterdComments.Where(a => a.Positive==false).Take(4).ToList().SelectMany(a => new RecentComment { CommentText = a.OpenEndedStart1, Positive = a.Positive, SupportingInfo = a.SupportingInfo }).ToList());
+
+
+            var allComments = filterdComments.SelectMany(sc => new[]
                                     {
                                         sc.OpenEndedStart1,
                                         sc.OpenEndedContinue1,
@@ -214,8 +235,14 @@ namespace TechnicalAssessmentTask2.Controllers
             {
                 words.Add(new object[] { item.Keyword, item.Frequency });
             }
-
-            return words;
+            return new CommentsReportViewModel
+            {
+                TotalComments = totalComments,
+                Positive = PositiveCount,
+                Negative = NegativeCount,
+                RecentComments = recentCommentsList,
+                WordCloud = words
+            };
         }
 
 
@@ -226,13 +253,13 @@ namespace TechnicalAssessmentTask2.Controllers
                 return RedirectToAction("Login", "Home");
             }
 
-             
-            var model = _heatmapService.GetHeatmapData(null,null,null,null,null);
+
+            var model = _heatmapService.GetHeatmapData(null, null, null, null, null);
 
             return View(model);
         }
 
-      
+
         [HttpPost]
         public IActionResult GetFilteredHeatMapData([FromBody] FilterRequest request)
         {

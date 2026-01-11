@@ -79,7 +79,7 @@
                     <div class="kpi-label">Total Comments</div>
                     <i class="bi bi-chat-dots fs-4" style="color: #7c3aed;"></i>
                 </div>
-                <div class="kpi-value mb-2">1,248</div>
+                <div class="kpi-value mb-2" id="TotalComments">@Model.TotalComments</div>
                 <small class="text-positive fw-semibold">↑ 12% vs last cycle</small>
             </div>
         </div>
@@ -89,7 +89,7 @@
                     <div class="kpi-label">Positive Sentiment</div>
                     <i class="bi bi-hand-thumbs-up fs-4 text-success"></i>
                 </div>
-                <div class="kpi-value text-success mb-2">64%</div>
+                <div class="kpi-value text-success mb-2" id="Positive">@Model.Positive%</div>
                 <small class="text-positive fw-semibold">↑ 5% vs last cycle</small>
             </div>
         </div>
@@ -99,7 +99,7 @@
                     <div class="kpi-label">Negative Sentiment</div>
                     <i class="bi bi-hand-thumbs-down fs-4 text-danger"></i>
                 </div>
-                <div class="kpi-value text-danger mb-2">14%</div>
+                <div class="kpi-value text-danger mb-2" id="Negative">@Model.Negative%</div>
                 <small class="text-negative fw-semibold">↓ 2% vs last cycle</small>
             </div>
         </div>
@@ -178,37 +178,34 @@
     <div class="row g-4">
         <div class="col-lg-8">
             <div class="card p-4">
-                <h6 class="fw-semibold mb-2">Theme Overview</h6>
-                <p class="small text-muted mb-3">Visualizing the relationship and volume of top discussion themes.</p>
-                <div id="bubble-container" style="display: flex; flex-wrap: wrap; gap: 10px; max-width: 900px;"></div>
 
-               @*  <div class="theme-bubble-chart">
-                    <svg viewBox="0 0 600 400" class="bubble-svg">
-                        <!-- WorkLoad, Work-Life Balance, Tools & Resources (red, overlapping) -->
-                        <circle cx="200" cy="150" r="60" fill="#ef4444" opacity="0.7" />
-                        <circle cx="230" cy="170" r="55" fill="#ef4444" opacity="0.7" />
-                        <circle cx="210" cy="190" r="50" fill="#ef4444" opacity="0.7" />
-                        <text x="200" y="150" text-anchor="middle" class="bubble-label">WorkLoad</text>
-                        <text x="230" y="170" text-anchor="middle" class="bubble-label">Work-Life Balance</text>
-                        <text x="210" y="190" text-anchor="middle" class="bubble-label">Tools & Resources</text>
-
-                        <!-- Compensation (red, separate) -->
-                        <circle cx="400" cy="100" r="45" fill="#ef4444" opacity="0.7" />
-                        <text x="400" y="100" text-anchor="middle" class="bubble-label">Compensation</text>
-
-                        <!-- Career Growth and Rewards (blue and red, overlapping) -->
-                        <circle cx="350" cy="250" r="55" fill="#3b82f6" opacity="0.7" />
-                        <circle cx="380" cy="270" r="50" fill="#ef4444" opacity="0.7" />
-                        <text x="350" y="250" text-anchor="middle" class="bubble-label">Career Growth</text>
-                        <text x="380" y="270" text-anchor="middle" class="bubble-label">Rewards</text>
-
-                        <!-- Sense of Belonging and Leadership (blue, overlapping) -->
-                        <circle cx="150" cy="300" r="50" fill="#3b82f6" opacity="0.7" />
-                        <circle cx="180" cy="320" r="55" fill="#3b82f6" opacity="0.7" />
-                        <text x="150" y="300" text-anchor="middle" class="bubble-label">Sense of Belonging</text>
-                        <text x="180" y="320" text-anchor="middle" class="bubble-label">Leadership</text>
-                    </svg>
-                </div> *@
+                     <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+                    <h3 class="text-base font-semibold text-gray-900 mb-1">Theme Overview</h3>
+                    <p class="text-sm text-gray-500 mb-6">Visualizing the relationship and volume of top discussion themes.</p>
+                    <div class="h-72 relative">
+                        <svg width="100%" height="100%" viewBox="0 0 700 280" preserveAspectRatio="xMidYMid meet" style="font-family: Inter, &quot;Exo 2&quot;, sans-serif;">
+                            <ellipse cx="115" cy="130" rx="85" ry="80" fill="rgba(254, 202, 202, 0.5)" stroke="rgba(252, 165, 165, 0.8)" stroke-width="1"></ellipse>
+                            <text x="115" y="135" text-anchor="middle" font-size="14" font-weight="600" fill="#374151">WorkLoad</text>
+                            <ellipse cx="75" cy="225" rx="45" ry="38" fill="rgba(229, 231, 235, 0.6)" stroke="rgba(209, 213, 219, 0.8)" stroke-width="1"></ellipse>
+                            <text x="75" y="220" text-anchor="middle" font-size="10" font-weight="500" fill="#374151">Tools &amp;</text>
+                            <text x="75" y="233" text-anchor="middle" font-size="10" font-weight="500" fill="#374151">Resources</text>
+                            <ellipse cx="175" cy="210" rx="60" ry="50" fill="rgba(254, 202, 202, 0.5)" stroke="rgba(252, 165, 165, 0.8)" stroke-width="1"></ellipse>
+                            <text x="175" y="215" text-anchor="middle" font-size="11" font-weight="500" fill="#374151">Work-Life Balance</text>
+                            <ellipse cx="300" cy="90" rx="65" ry="60" fill="rgba(254, 202, 202, 0.5)" stroke="rgba(252, 165, 165, 0.8)" stroke-width="1"></ellipse>
+                            <text x="300" y="95" text-anchor="middle" font-size="13" font-weight="600" fill="#374151">Compensation</text>
+                            <ellipse cx="340" cy="200" rx="45" ry="40" fill="rgba(199, 210, 254, 0.5)" stroke="rgba(165, 180, 252, 0.8)" stroke-width="1"></ellipse>
+                            <text x="340" y="195" text-anchor="middle" font-size="10" font-weight="500" fill="#374151">Career</text>
+                            <text x="340" y="208" text-anchor="middle" font-size="10" font-weight="500" fill="#374151">Growth</text>
+                            <ellipse cx="415" cy="195" rx="42" ry="38" fill="rgba(254, 202, 202, 0.5)" stroke="rgba(252, 165, 165, 0.8)" stroke-width="1"></ellipse>
+                            <text x="415" y="200" text-anchor="middle" font-size="11" font-weight="500" fill="#374151">Rewards</text>
+                            <ellipse cx="480" cy="85" rx="55" ry="50" fill="rgba(229, 231, 235, 0.6)" stroke="rgba(209, 213, 219, 0.8)" stroke-width="1"></ellipse>
+                            <text x="480" y="80" text-anchor="middle" font-size="10" font-weight="500" fill="#374151">Sense of</text>
+                            <text x="480" y="93" text-anchor="middle" font-size="10" font-weight="500" fill="#374151">Belonging</text>
+                            <ellipse cx="590" cy="120" rx="80" ry="75" fill="rgba(199, 210, 254, 0.45)" stroke="rgba(165, 180, 252, 0.8)" stroke-width="1"></ellipse>
+                            <text x="590" y="125" text-anchor="middle" font-size="14" font-weight="600" fill="#374151">Leadership</text>
+                        </svg>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -229,7 +226,7 @@
                 const options = {
                     list: words,
                     gridSize: 12,
-                  
+
 
                     fontFamily: "Segoe UI",
                     color: function (word, weight, fontSize, distance, theta) {
@@ -284,14 +281,17 @@
                 });
 
                 if (response.ok) {
+                    debugger;
                     const data = await response.json();
 
-                    if (data.length === 0) {
+                    if (data.wordCloud.length === 0) {
                         alert('No data found for the selected filters.');
                         return;
                     }
-
-                    currentWords = data;
+                    $("#TotalComments").text(data.totalComments);
+                    $("#Positive").text(data.positive);
+                    $("#Negative").text(data.negative);
+                    currentWords = data.wordCloud;
 
                     // Reset the canvas completely
                     const canvas = document.getElementById('word-cloud-canvas');
@@ -306,7 +306,7 @@
                     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
                     // Redraw the word cloud with filtered data
-                    drawWordCloud(data);
+                    drawWordCloud(currentWords);
                 } else {
                     console.error('Failed to fetch filtered data');
                     alert('Failed to apply filters. Please try again.');
@@ -327,48 +327,5 @@
 
 
 
-              // Example data: list of [word, count]
-        const Bubblewords = [
-          ["Flexibility", 10],
-          ["Culture", 7],
-          ["Communication", 15],
-          ["Goals", 5],
-          ["Management", 12],
-          ["Recognition", 3]
-        ];
-
-        const container = document.getElementById('bubble-container');
-
-        // Normalize sizes for bubbles (min 30px to max 150px)
-        const counts = Bubblewords .map(w => w[1]);
-        const minCount = Math.min(...counts);
-        const maxCount = Math.max(...counts);
-
-        function normalize(count) {
-          const minSize = 30;
-          const maxSize = 150;
-          return minSize + ((count - minCount) / (maxCount - minCount)) * (maxSize - minSize);
-        }
-
-        Bubblewords .forEach(([word, count]) => {
-          const size = normalize(count);
-
-          // Create bubble div
-          const bubble = document.createElement('div');
-          bubble.textContent = word + ' (' + count + ')';
-          bubble.style.width = size + 'px';
-          bubble.style.height = size + 'px';
-          bubble.style.borderRadius = '50%';
-          bubble.style.backgroundColor = '#6c5ce7';
-          bubble.style.color = 'white';
-          bubble.style.display = 'flex';
-          bubble.style.alignItems = 'center';
-          bubble.style.justifyContent = 'center';
-          bubble.style.fontSize = Math.min(14, size / 5) + 'px';
-          bubble.style.cursor = 'default';
-          bubble.style.userSelect = 'none';
-
-          container.appendChild(bubble);
-        });
     </script>
 }

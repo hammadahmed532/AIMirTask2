@@ -50,6 +50,57 @@
         text-overflow: ellipsis;
     }
 
+    /* Top Correlated Drivers card styling */
+    .top-driver-card {
+        border-radius: 12px;
+        border: 1px solid rgba(124,58,237,0.10);
+        background: linear-gradient(180deg, #ffffff, #fbfbff);
+        box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06), 0 2px 8px rgba(15, 23, 42, 0.04);
+        padding: 14px;
+        transition: transform .18s ease, box-shadow .18s ease;
+    }
+
+        .top-driver-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 40px rgba(15, 23, 42, 0.10), 0 4px 12px rgba(15, 23, 42, 0.06);
+        }
+
+        .top-driver-card h6 {
+            margin-bottom: 0.5rem;
+        }
+
+        .top-driver-card p {
+            margin-bottom: 0.75rem;
+        }
+
+        .top-driver-card .list-unstyled {
+            margin-bottom: 0;
+        }
+
+        /* enforce badge color used in the template */
+        .top-driver-card .badge {
+            background-color: #7c3aed !important;
+            border-color: #7c3aed !important;
+            color: #fff;
+        }
+
+    /* small fade used when replacing lists */
+    .list-replace {
+        transition: opacity 180ms ease;
+    }
+
+    .list-hidden {
+        opacity: 0;
+    }
+
+    .driver-item-name {
+        color: #2b2b2b;
+    }
+
+    .driver-item-row {
+        padding: 6px 0;
+        border-bottom: 1px dashed rgba(0,0,0,0.04);
+    }
 </style>
 <div class="container-fluid px-4 py-3">
     <!-- Page Title -->
@@ -186,56 +237,43 @@
             <div class="card p-4">
                 <h6 class="fw-semibold mb-4">Top Correlated Drivers</h6>
 
-                <div class="mb-4" style="border: 1px solid black;">
-
+                <div id="top-discretionary" class="mb-4 top-driver-card">
                     <h6 class="small fw-semibold mb-2"><span class="fa fa-line-chart"></span>  Discretionary Effort</h6>
                     <p class="small text-muted mb-3">Drivers with the strongest impact.</p>
-                    <ul class="list-unstyled">
+                    <ul id="list-discretionary" class="list-unstyled list-replace">
                         @foreach (var item in Model.TopDiscretionaryEffortDrivers)
                         {
-                            <li class="mb-2 d-flex justify-content-between align-items-center">
-                                <span class="text-sm text-gray-700">@item.Driver</span>
-
-                                <span class="badge bg-primary" style="background-color: #7c3aed !important;border-color: #7c3aed;">
-
-                                    @item.Correlation.ToString("+0.00;-0.00")
-                                </span>
+                            <li class="mb-2 d-flex justify-content-between align-items-center driver-item-row">
+                                <span class="driver-item-name">@item.Driver</span>
+                                <span class="badge bg-primary">@item.Correlation.ToString("+0.00;-0.00")</span>
                             </li>
                         }
                     </ul>
                 </div>
 
-                <div class="mb-4" style="border: 1px solid black;">
+                <div id="top-intent" class="mb-4 top-driver-card">
                     <h6 class="small fw-semibold mb-2"> <span class="fa fa-heart"></span> Intent to Stay</h6>
                     <p class="small text-muted mb-3">Drivers with the strongest impact.</p>
-                    <ul class="list-unstyled">
+                    <ul id="list-intent" class="list-unstyled list-replace">
                         @foreach (var item in Model.TopIntentToStayDrivers)
                         {
-                            <li class="mb-2 d-flex justify-content-between align-items-center">
-                                <span class="text-sm text-gray-700">@item.Driver</span>
-
-                                <span class="badge bg-primary" style="background-color: #7c3aed !important;border-color: #7c3aed;">
-
-                                    @item.Correlation.ToString("+0.00;-0.00")
-                                </span>
+                            <li class="mb-2 d-flex justify-content-between align-items-center driver-item-row">
+                                <span class="driver-item-name">@item.Driver</span>
+                                <span class="badge bg-primary">@item.Correlation.ToString("+0.00;-0.00")</span>
                             </li>
                         }
                     </ul>
                 </div>
 
-                <div class="mb-4" style="border: 1px solid black;">
-
+                <div id="top-advocacy" class="mb-4 top-driver-card">
                     <h6 class="small fw-semibold mb-2"><i class="fa fa-bar-chart" aria-hidden="true"></i> Advocacy</h6>
                     <p class="small text-muted mb-3">Drivers with the strongest impact.</p>
-                    <ul class="list-unstyled">
+                    <ul id="list-advocacy" class="list-unstyled list-replace">
                         @foreach (var item in Model.TopAdvocacy)
                         {
-                            <li class="mb-2 d-flex justify-content-between align-items-center">
-                                <span class="text-sm text-gray-700">@item.Driver</span>
-
-                                <span class="badge bg-primary" style="background-color: #7c3aed !important;border-color: #7c3aed;">
-                                    @item.Correlation.ToString("+0.00;-0.00")
-                                </span>
+                            <li class="mb-2 d-flex justify-content-between align-items-center driver-item-row">
+                                <span class="driver-item-name">@item.Driver</span>
+                                <span class="badge bg-primary">@item.Correlation.ToString("+0.00;-0.00")</span>
                             </li>
                         }
                     </ul>
@@ -297,8 +335,50 @@
             });
         }
 
+        function renderTopList(containerId, items) {
+            const ul = document.getElementById(containerId);
+            if (!ul) return;
+
+            // simple fade-out / replace / fade-in
+            ul.classList.add('list-hidden');
+
+            setTimeout(() => {
+                ul.innerHTML = '';
+                if (!Array.isArray(items) || items.length === 0) {
+                    const li = document.createElement('li');
+                    li.className = 'mb-2 driver-item-row';
+                    li.innerHTML = '<span class="driver-item-name">No drivers</span>';
+                    ul.appendChild(li);
+                } else {
+                    items.forEach(it => {
+                        const li = document.createElement('li');
+                        li.className = 'mb-2 d-flex justify-content-between align-items-center driver-item-row';
+                        const driverName = it.Driver || it.driver || '';
+                        const correlation = (typeof it.Correlation === 'number') ? it.Correlation : (it.correlation || 0);
+                        li.innerHTML = `<span class="driver-item-name">${driverName}</span>
+                                        <span class="badge">${(Number(correlation) || 0).toFixed(2)}</span>`;
+                        ul.appendChild(li);
+                    });
+                }
+                // reveal
+                ul.classList.remove('list-hidden');
+            }, 180);
+        }
+
         // render initial table
         renderHeatmapTable(heatmapData);
+
+        // Optionally expose a helper to update top driver cards from a model
+        function updateTopDriverCards(model) {
+            // model may be camelCase or PascalCase depending on server serializer
+            const topDis = model.topDiscretionaryEffortDrivers || model.TopDiscretionaryEffortDrivers || model.TopDiscretionaryEffort || [];
+            const topIntent = model.topIntentToStayDrivers || model.TopIntentToStayDrivers || model.TopIntentToStay || [];
+            const topAdv = model.topAdvocacy || model.TopAdvocacy || [];
+
+            renderTopList('list-discretionary', topDis);
+            renderTopList('list-intent', topIntent);
+            renderTopList('list-advocacy', topAdv);
+        }
 
         // intercept filter form submit and perform AJAX
         (function attachFilterHandler() {
@@ -337,15 +417,18 @@
                     if (!resp.ok) {
                         console.error('Server returned', resp.status);
                         alert('Failed to fetch filtered heatmap data.');
-                        hideLoader();
                         return;
                     }
-                    const data = await resp.json();
 
-                    // Expecting array of { driver, discretionaryEffort, intentToStay, advocacy }
+                    const data = await resp.json();
+                    // If server returns model object, update both table and top driver cards.
+                    // server returns { correlationData: [...], topDiscretionaryEffortDrivers: [...], ... }
+                    const correlation = data.correlationData || data.CorrelationData || data;
+                    renderHeatmapTable(correlation);
+
+                    updateTopDriverCards(data);
                         hideLoader();
 
-                    renderHeatmapTable(data.correlationData);
 
                 } catch (err) {
                     console.error(err);

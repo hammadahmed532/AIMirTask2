@@ -21,6 +21,8 @@ namespace TechnicalAssessmentTask2.Models
 
         [Column(TypeName = "nvarchar(max)")]
         public string? OpenEndedAnythingElse1 { get; set; }
+        public bool Positive { get; set; }
+        public string SupportingInfo { get; set; }
 
         // Navigation property (optional, if you want to link to SurveyResponse)
         public virtual SurveyResponse? SurveyResponse { get; set; }
