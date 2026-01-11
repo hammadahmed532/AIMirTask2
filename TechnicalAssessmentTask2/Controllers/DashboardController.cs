@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client.Extensions.Msal;
 using System;
+using System.Linq;
 using TechnicalAssessmentTask2.Data;
 using TechnicalAssessmentTask2.Models;
 using TechnicalAssessmentTask2.Service;
@@ -183,8 +184,7 @@ namespace TechnicalAssessmentTask2.Controllers
                 int startAge = int.Parse(ages.FirstOrDefault(a => a.Value == age)?.Text.Split("-")[0] ?? "0");
                 int endAge = int.Parse(ages.FirstOrDefault(a => a.Value == age)?.Text.Split("-")[1] ?? "0");
                 query = query.Where(s => s.Age >= startAge && s.Age <= endAge);
-            }
-                query = query.Where(s => s.Location == "karachi");
+            } 
 
             var filteredIds = query.Select(s => s.ID).ToList();
 
@@ -234,13 +234,31 @@ namespace TechnicalAssessmentTask2.Controllers
                 .Where(kf => kf.Frequency > 0)  // Only keywords that appeared
                 .OrderByDescending(kf => kf.Frequency)
                 .ToList();
-
+             
             var words = new List<object[]>();
+            var originalTotal = keywordFrequency.Sum(k => k.Frequency);
 
-            foreach (var item in keywordFrequency)
+            if (originalTotal != 0)
             {
-                words.Add(new object[] { item.Keyword, item.Frequency });
+                // scale to total 500 (relative marking)
+                foreach (var item in keywordFrequency)
+                {
+                    // scaled frequency proportional to full 500
+                    var scaled = (int)Math.Round((double)item.Frequency / originalTotal * 500);
+
+                    // ensure items that appeared get at least 1
+                    if (scaled == 0 && item.Frequency > 0) scaled = 1;
+
+                    // if dataset is small, give a modest boost so words remain visible
+                    if (originalTotal < 900 && item.Frequency > 0)
+                    {
+                        scaled += 10;
+                    }
+
+                    words.Add(new object[] { item.Keyword, scaled });
+                }
             }
+
             return new CommentsReportViewModel
             {
                 TotalComments = totalComments,
