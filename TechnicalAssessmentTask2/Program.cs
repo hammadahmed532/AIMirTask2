@@ -1,7 +1,8 @@
+using BCrypt.Net;
 using Microsoft.EntityFrameworkCore;
 using TechnicalAssessmentTask2.Data;
 using TechnicalAssessmentTask2.Models;
-using BCrypt.Net;
+using TechnicalAssessmentTask2.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 // Register Excel Import Service
 builder.Services.AddScoped<TechnicalAssessmentTask2.Services.ExcelImportService>();
+builder.Services.AddScoped<IHeatmapService, HeatmapService>();
 
 // Add session for authentication
 builder.Services.AddDistributedMemoryCache();

@@ -2,73 +2,123 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = "Heatmap View";
+    var heatmapService = new TechnicalAssessmentTask2.Service.CommonUtility();
 }
 
+<style>
+    .heatmap-container {
+        width: 100%;
+        background: #fff;
+        border-radius: 12px;
+        padding: 16px;
+    }
+
+    .heatmap-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 8px;
+        font-family: "Segoe UI", sans-serif;
+    }
+
+        .heatmap-table th {
+            text-align: center;
+            font-weight: 600;
+            color: #444;
+        }
+
+        .heatmap-table td {
+            text-align: center;
+            padding: 14px;
+            border-radius: 8px;
+            font-weight: 600;
+            color: #fff;
+        }
+
+    .driver-cell {
+        text-align: left !important;
+        font-weight: 600;
+        color: #444 !important;
+        background: transparent !important;
+    }
+
+    .heatmap-table th:first-child,
+    .heatmap-table td.driver-cell {
+        width: 180px; /* adjust as needed */
+        max-width: 180px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+</style>
 <div class="container-fluid px-4 py-3">
     <!-- Page Title -->
     <h2 class="mb-4 fw-bold">Heatmap View</h2>
 
     <!-- Filters -->
-    <div class="card p-3 mb-4">
-        <div class="row g-3 align-items-end">
-            <div class="col-md">
-                <label class="form-label small text-muted mb-1">Location</label>
-                <select class="form-select form-select-sm" name="location" id="locationFilter">
-                    <option value="">All Locations</option>
-                    @foreach (var location in Model.Locations)
-                    {
-                        <option value="@location">@location</option>
-                    }
-                </select>
-            </div>
-            <div class="col-md">
-                <label class="form-label small text-muted mb-1">Department</label>
-                <select class="form-select form-select-sm" name="department" id="departmentFilter">
-                    <option>All Departments</option>
-                    @foreach (var department in Model.Departments)
-                    {
-                        <option value="@department">@department</option>
-                    }
-                </select>
-            </div>
-            <div class="col-md">
-                <label class="form-label small text-muted mb-1">Gender</label>
-                <select class="form-select form-select-sm" name="Gender" id="GenderFilter">
-                    <option>All Gender</option>
-                    @foreach (var gender in Model.Genders)
-                    {
-                        <option value="@gender">@gender</option>
-                    }
-                </select>
-            </div>
-            <div class="col-md">
-                <label class="form-label small text-muted mb-1">Tenure</label>
-                <select class="form-select form-select-sm" name="Tenure" id="TenuresFilter">
-                    <option>All Tenure</option>
-                    @foreach (var tenure in Model.Tenures)
-                    {
-                        <option value="@tenure.Value">@tenure.Text</option>
-                    }
-                </select>
-            </div>
-            <div class="col-md">
-                <label class="form-label small text-muted mb-1">Age</label>
-                <select class="form-select form-select-sm" name="Age" id="AgesFilter">
-                    <option>All Ages</option>
-                    @foreach (var age in Model.Ages)
-                    {
-                        <option value="@age.Value">@age.Text</option>
-                    }
-                </select>
-            </div>
-            <div class="col-md-auto d-flex gap-2">
-                <button class="btn btn-primary px-4" style="background-color: #7c3aed; border-color: #7c3aed;">Apply Filters</button>
-                <button class="btn btn-outline-secondary">
-                    <i class="bi bi-download"></i> Export
-                </button>
+    <form method="post" action="@Url.Action("Filter", "Dashboard")">
+
+        <div class="card p-3 mb-4">
+            <div class="row g-3 align-items-end">
+                <div class="col-md">
+                    <label class="form-label small text-muted mb-1">Location</label>
+                    <select class="form-select form-select-sm" name="location" id="locationFilter">
+                        <option value="">All Locations</option>
+                        @foreach (var location in Model.Locations)
+                        {
+                            <option value="@location">@location</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md">
+                    <label class="form-label small text-muted mb-1">Department</label>
+                    <select class="form-select form-select-sm" name="department" id="departmentFilter">
+                        <option value="">All Departments</option>
+                        @foreach (var department in Model.Departments)
+                        {
+                            <option value="@department">@department</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md">
+                    <label class="form-label small text-muted mb-1">Gender</label>
+                    <select class="form-select form-select-sm" name="Gender" id="GenderFilter">
+                        <option value="">All Gender</option>
+                        @foreach (var gender in Model.Genders)
+                        {
+                            <option value="@gender">@gender</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md">
+                    <label class="form-label small text-muted mb-1">Tenure</label>
+                    <select class="form-select form-select-sm" name="Tenure" id="TenuresFilter">
+                        <option value="">All Tenure</option>
+                        @foreach (var tenure in Model.Tenures)
+                        {
+                            <option value="@tenure.Value">@tenure.Text</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md">
+                    <label class="form-label small text-muted mb-1">Age</label>
+                    <select class="form-select form-select-sm" name="Age" id="AgesFilter">
+                        <option value="">All Ages</option>
+                        @foreach (var age in Model.Ages)
+                        {
+                            <option value="@age.Value">@age.Text</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-auto d-flex gap-2">
+                    <button class="btn btn-primary px-4" type="submit" style="background-color: #7c3aed; border-color: #7c3aed;">Apply Filters</button>
+                    <button class="btn btn-outline-secondary">
+                        <i class="bi bi-download"></i> Export
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
+    </form>
 
     <div class="row g-4">
         <!-- Main Heatmap -->
@@ -76,74 +126,22 @@
             <div class="card p-4">
                 <h6 class="fw-semibold mb-2">Engagement Driver Correlations</h6>
                 <p class="small text-muted mb-4">Visualizing the strength and direction of relationships between engagement drivers and outcome drivers.</p>
-                
+                <div id="myDiv"></div>
                 <div class="table-responsive">
-                    <table class="table table-bordered heatmap-table">
-                        <thead>
-                            <tr>
-                                <th class="text-start">Engagement Drivers</th>
-                                <th class="text-center">Discretionary Effort</th>
-                                <th class="text-center">Intent to Stay</th>
-                                <th class="text-center">Advocacy</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="fw-semibold">Leadership</td>
-                                <td class="text-center correlation-cell strong-positive">0.86</td>
-                                <td class="text-center correlation-cell moderate-positive">0.71</td>
-                                <td class="text-center correlation-cell moderate-positive">0.68</td>
-                            </tr>
-                            <tr>
-                                <td class="fw-semibold">Teamwork</td>
-                                <td class="text-center correlation-cell moderate-negative">-0.48</td>
-                                <td class="text-center correlation-cell strong-positive">0.65</td>
-                                <td class="text-center correlation-cell weak-positive">0.35</td>
-                            </tr>
-                            <tr>
-                                <td class="fw-semibold">Meaningfulness</td>
-                                <td class="text-center correlation-cell strong-positive">0.75</td>
-                                <td class="text-center correlation-cell moderate-positive">0.60</td>
-                                <td class="text-center correlation-cell moderate-positive">0.60</td>
-                            </tr>
-                            <tr>
-                                <td class="fw-semibold">Work-Life Balance</td>
-                                <td class="text-center correlation-cell strong-negative">-0.90</td>
-                                <td class="text-center correlation-cell strong-positive">0.85</td>
-                                <td class="text-center correlation-cell moderate-positive">0.55</td>
-                            </tr>
-                            <tr>
-                                <td class="fw-semibold">Recognition</td>
-                                <td class="text-center correlation-cell strong-positive">0.68</td>
-                                <td class="text-center correlation-cell moderate-positive">0.58</td>
-                                <td class="text-center correlation-cell moderate-positive">0.62</td>
-                            </tr>
-                            <tr>
-                                <td class="fw-semibold">Sense of Contribution</td>
-                                <td class="text-center correlation-cell moderate-positive">0.55</td>
-                                <td class="text-center correlation-cell weak-positive">0.42</td>
-                                <td class="text-center correlation-cell moderate-positive">0.58</td>
-                            </tr>
-                            <tr>
-                                <td class="fw-semibold">Trust</td>
-                                <td class="text-center correlation-cell moderate-positive">0.62</td>
-                                <td class="text-center correlation-cell strong-negative">-1.00</td>
-                                <td class="text-center correlation-cell moderate-positive">0.65</td>
-                            </tr>
-                            <tr>
-                                <td class="fw-semibold">Role Clarity</td>
-                                <td class="text-center correlation-cell moderate-positive">0.58</td>
-                                <td class="text-center correlation-cell strong-positive">0.84</td>
-                                <td class="text-center correlation-cell moderate-positive">0.59</td>
-                            </tr>
-                            <tr>
-                                <td class="fw-semibold">Sense of Belonging</td>
-                                <td class="text-center correlation-cell moderate-positive">0.64</td>
-                                <td class="text-center correlation-cell moderate-positive">0.72</td>
-                                <td class="text-center correlation-cell strong-positive">0.95</td>
-                            </tr>
-                        </tbody>
-                    </table>
+
+                    <div class="heatmap-container">
+                        <table class="heatmap-table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Discretionary Effort</th>
+                                    <th>Intent to Stay</th>
+                                    <th>Advocacy</th>
+                                </tr>
+                            </thead>
+                            <tbody id="heatmap-body"></tbody>
+                        </table>
+                    </div>
                 </div>
 
                 <!-- Correlation Strength Legend -->
@@ -187,77 +185,175 @@
         <div class="col-lg-4">
             <div class="card p-4">
                 <h6 class="fw-semibold mb-4">Top Correlated Drivers</h6>
-                
-                <div class="mb-4">
-                    <h6 class="small fw-semibold mb-2">Discretionary Effort</h6>
+
+                <div class="mb-4" style="border: 1px solid black;">
+
+                    <h6 class="small fw-semibold mb-2"><span class="fa fa-line-chart"></span>  Discretionary Effort</h6>
                     <p class="small text-muted mb-3">Drivers with the strongest impact.</p>
                     <ul class="list-unstyled">
-                        <li class="mb-2 d-flex justify-content-between align-items-center">
-                            <span class="small">Leadership</span>
-                            <span class="badge bg-primary">+0.82</span>
-                        </li>
-                        <li class="mb-2 d-flex justify-content-between align-items-center">
-                            <span class="small">Purpose & Meaning</span>
-                            <span class="badge bg-primary">+0.75</span>
-                        </li>
-                        <li class="mb-2 d-flex justify-content-between align-items-center">
-                            <span class="small">Recognition</span>
-                            <span class="badge bg-primary">+0.68</span>
-                        </li>
-                        <li class="mb-2 d-flex justify-content-between align-items-center">
-                            <span class="small">Growth Opportunities</span>
-                            <span class="badge bg-primary">+0.62</span>
-                        </li>
+                        @foreach (var item in Model.TopDiscretionaryEffortDrivers)
+                        {
+                            <li class="mb-2 d-flex justify-content-between align-items-center">
+                                <span class="text-sm text-gray-700">@item.Driver</span>
+
+                                <span class="badge bg-primary" style="background-color: #7c3aed !important;border-color: #7c3aed;">
+
+                                    @item.Correlation.ToString("+0.00;-0.00")
+                                </span>
+                            </li>
+                        }
                     </ul>
                 </div>
 
-                <div class="mb-4">
-                    <h6 class="small fw-semibold mb-2">Intent to Stay</h6>
+                <div class="mb-4" style="border: 1px solid black;">
+                    <h6 class="small fw-semibold mb-2"> <span class="fa fa-heart"></span> Intent to Stay</h6>
                     <p class="small text-muted mb-3">Drivers with the strongest impact.</p>
                     <ul class="list-unstyled">
-                        <li class="mb-2 d-flex justify-content-between align-items-center">
-                            <span class="small">Work-Life Balance</span>
-                            <span class="badge bg-primary">+0.85</span>
-                        </li>
-                        <li class="mb-2 d-flex justify-content-between align-items-center">
-                            <span class="small">Feedback & Development</span>
-                            <span class="badge bg-primary">+0.79</span>
-                        </li>
-                        <li class="mb-2 d-flex justify-content-between align-items-center">
-                            <span class="small">Leadership</span>
-                            <span class="badge bg-primary">+0.71</span>
-                        </li>
-                        <li class="mb-2 d-flex justify-content-between align-items-center">
-                            <span class="small">Teamwork</span>
-                            <span class="badge bg-primary">+0.65</span>
-                        </li>
+                        @foreach (var item in Model.TopIntentToStayDrivers)
+                        {
+                            <li class="mb-2 d-flex justify-content-between align-items-center">
+                                <span class="text-sm text-gray-700">@item.Driver</span>
+
+                                <span class="badge bg-primary" style="background-color: #7c3aed !important;border-color: #7c3aed;">
+
+                                    @item.Correlation.ToString("+0.00;-0.00")
+                                </span>
+                            </li>
+                        }
                     </ul>
                 </div>
 
-                <div>
-                    <h6 class="small fw-semibold mb-2">Advocacy</h6>
+                <div class="mb-4" style="border: 1px solid black;">
+
+                    <h6 class="small fw-semibold mb-2"><i class="fa fa-bar-chart" aria-hidden="true"></i> Advocacy</h6>
                     <p class="small text-muted mb-3">Drivers with the strongest impact.</p>
                     <ul class="list-unstyled">
-                        <li class="mb-2 d-flex justify-content-between align-items-center">
-                            <span class="small">Communication</span>
-                            <span class="badge bg-primary">+0.73</span>
-                        </li>
-                        <li class="mb-2 d-flex justify-content-between align-items-center">
-                            <span class="small">Innovation</span>
-                            <span class="badge bg-primary">+0.69</span>
-                        </li>
-                        <li class="mb-2 d-flex justify-content-between align-items-center">
-                            <span class="small">Purpose & Meaning</span>
-                            <span class="badge bg-primary">+0.60</span>
-                        </li>
-                        <li class="mb-2 d-flex justify-content-between align-items-center">
-                            <span class="small">Work-Life Balance</span>
-                            <span class="badge bg-primary">+0.55</span>
-                        </li>
+                        @foreach (var item in Model.TopAdvocacy)
+                        {
+                            <li class="mb-2 d-flex justify-content-between align-items-center">
+                                <span class="text-sm text-gray-700">@item.Driver</span>
+
+                                <span class="badge bg-primary" style="background-color: #7c3aed !important;border-color: #7c3aed;">
+                                    @item.Correlation.ToString("+0.00;-0.00")
+                                </span>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>
         </div>
     </div>
 </div>
- 
+
+@section Scripts {
+
+    <script type="text/javascript">
+        // initial data rendered on server
+        const heatmapData = @Html.Raw(Json.Serialize(Model.CorrelationData));
+
+        function getHeatColor(value) {
+            const abs = Math.abs(value);
+
+            if (value >= 0) {
+                if (abs > 0.8) return "#6f79e8";   // strong positive (blue)
+                if (abs > 0.5) return "#9da3f0";
+                if (abs > 0.2) return "#d6d9fb";
+                return "#f2f3fd";
+            } else {
+                if (abs > 0.8) return "#e24b4b";   // strong negative (red)
+                if (abs > 0.5) return "#f08a8a";
+                if (abs > 0.2) return "#f6c1c1";
+                return "#fdecec";
+            }
+        }
+
+        const tbody = document.getElementById("heatmap-body");
+
+        // render helper - re-uses same markup as initial render
+        function renderHeatmapTable(data) {
+            tbody.innerHTML = '';
+            if (!Array.isArray(data) || data.length === 0) {
+                const tr = document.createElement('tr');
+                tr.innerHTML = '<td class="driver-cell" colspan="4">No data available for the selected filters.</td>';
+                tbody.appendChild(tr);
+                return;
+            }
+
+            data.forEach(row => {
+                const tr = document.createElement("tr");
+                // guard numeric values and provide fallback
+                const disc = (typeof row.discretionaryEffort === 'number') ? row.discretionaryEffort : parseFloat(row.discretionaryEffort) || 0;
+                const stay = (typeof row.intentToStay === 'number') ? row.intentToStay : parseFloat(row.intentToStay) || 0;
+                const adv = (typeof row.advocacy === 'number') ? row.advocacy : parseFloat(row.advocacy) || 0;
+
+                tr.innerHTML = `
+                  <td class="driver-cell">${row.driver}</td>
+                  <td style="background:${getHeatColor(disc)}">${disc.toFixed(2)}</td>
+                  <td style="background:${getHeatColor(stay)}">${stay.toFixed(2)}</td>
+                  <td style="background:${getHeatColor(adv)}">${adv.toFixed(2)}</td>
+                `;
+
+                tbody.appendChild(tr);
+            });
+        }
+
+        // render initial table
+        renderHeatmapTable(heatmapData);
+
+        // intercept filter form submit and perform AJAX
+        (function attachFilterHandler() {
+            // select the filter form on the page (first form or the one that targets "Filter")
+            const filterForm = document.querySelector('form[action*="Filter"]') || document.querySelector('form');
+            if (!filterForm) return;
+
+            const submitBtn = filterForm.querySelector('button[type="submit"]');
+
+            filterForm.addEventListener('submit', async function (e) {
+                e.preventDefault();
+
+                if (submitBtn) submitBtn.disabled = true;
+
+                const location = document.getElementById('locationFilter')?.value || '';
+                const department = document.getElementById('departmentFilter')?.value || '';
+                const gender = document.getElementById('GenderFilter')?.value || '';
+                const tenureVal = document.getElementById('TenuresFilter')?.value;
+                const ageVal = document.getElementById('AgesFilter')?.value;
+
+                const payload = {
+                    location: location,
+                    department: department,
+                    gender: gender,
+                    tenure: tenureVal ? parseFloat(tenureVal) : null,
+                    age: ageVal ? parseInt(ageVal, 10) : null
+                };
+
+                try {
+                    const resp = await fetch('/Dashboard/GetFilteredHeatMapData', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!resp.ok) {
+                        console.error('Server returned', resp.status);
+                        alert('Failed to fetch filtered heatmap data.');
+                        hideLoader();
+                        return;
+                    }
+                    const data = await resp.json();
+
+                    // Expecting array of { driver, discretionaryEffort, intentToStay, advocacy }
+                        hideLoader();
+
+                    renderHeatmapTable(data.correlationData);
+
+                } catch (err) {
+                    console.error(err);
+                    alert('An error occurred while fetching heatmap data.');
+                } finally {
+                    if (submitBtn) submitBtn.disabled = false;
+                }
+            });
+        })();
+    </script>
+}
