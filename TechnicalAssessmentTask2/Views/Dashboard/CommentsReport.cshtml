@@ -131,40 +131,9 @@
                     </div>
                 </div>
 
-                <div class="comment-card positive mb-3">
-                    <div class="d-flex justify-content-between align-items-start mb-2">
-                        <small class="badge bg-success">Positive</small>
-                        <small class="text-muted">2 days ago</small>
-                    </div>
-                    <p class="mb-2 small">"I really appreciate the flexibility with remote work options. It has significantly improved my work-life balance and overall productivity."</p>
-                    <span class="badge bg-light text-dark small">Work Life Balance</span>
-                </div>
-
-                <div class="comment-card negative mb-3">
-                    <div class="d-flex justify-content-between align-items-start mb-2">
-                        <small class="badge bg-danger">Negative</small>
-                        <small class="text-muted">1 week ago</small>
-                    </div>
-                    <p class="mb-2 small">"Salary adjustments this year didn't seem to match the inflation rate. A lot of the team is concerned about compensation competitiveness."</p>
-                    <span class="badge bg-light text-dark small">Rewards</span>
-                </div>
-
-                <div class="comment-card negative mb-3">
-                    <div class="d-flex justify-content-between align-items-start mb-2">
-                        <small class="badge bg-danger">Negative</small>
-                        <small class="text-muted">3 days ago</small>
-                    </div>
-                    <p class="mb-2 small">"The new project management tool is quite confusing and slows us down. We need better training or a more intuitive system."</p>
-                    <span class="badge bg-light text-dark small">Enablement</span>
-                </div>
-
-                <div class="comment-card neutral">
-                    <div class="d-flex justify-content-between align-items-start mb-2">
-                        <small class="badge bg-secondary">Neutral</small>
-                        <small class="text-muted">1 week ago</small>
-                    </div>
-                    <p class="mb-2 small">"The cross-functional collaboration between marketing and engineering has improved, but there are still silos."</p>
-                    <span class="badge bg-light text-dark small">Collaboration</span>
+                <!-- initial server-rendered comments kept inside a container for client re-render -->
+                <div id="recent-comments-list">
+                
                 </div>
 
                 <div class="text-end mt-3">
@@ -179,7 +148,7 @@
         <div class="col-lg-8">
             <div class="card p-4">
 
-                     <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
                     <h3 class="text-base font-semibold text-gray-900 mb-1">Theme Overview</h3>
                     <p class="text-sm text-gray-500 mb-6">Visualizing the relationship and volume of top discussion themes.</p>
                     <div class="h-72 relative">
@@ -215,6 +184,61 @@
 
     <script type="text/javascript">
         let currentWords = @Html.Raw(JsonSerializer.Serialize(ViewBag.WordCloudData));
+        let recentComments = @Html.Raw(JsonSerializer.Serialize(Model.RecentComments ?? new List<RecentComment>()));
+
+        const escapeHtml = (str) => {
+            if (!str && str !== 0) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;');
+        };
+
+        function renderRecentComments(filter = 'all') {
+            const container = document.getElementById('recent-comments-list');
+
+            if (!container) return;
+            container.innerHTML = '';
+
+            const list = Array.isArray(recentComments) ? recentComments : [];
+            const filtered = list.filter(c => {
+                const positive = (c.positive ?? c.Positive) === true;
+                if (filter === 'positive') return positive;
+                if (filter === 'negative') return !positive;
+                return true;
+            });
+
+            if (filtered.length === 0) {
+                container.innerHTML = '<div class="text-muted small">No comments available for the selected filter.</div>';
+                return;
+            }
+
+            // render at most 4 comments
+            const toShow = filtered.slice(0, 4);
+            toShow.forEach(c => {
+                const positive = (c.positive ?? c.Positive) === true;
+                const commentText = c.commentText ?? c.CommentText ?? '';
+                const supporting = c.supportingInfo ?? c.SupportingInfo ?? '';
+
+                const card = document.createElement('div');
+                card.className = 'comment-card mb-3 ' + (positive ? 'positive' : 'negative');
+
+                card.innerHTML = `
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <small class="badge ${positive ? 'bg-success PositiveComment' : 'bg-danger NegativeComment'}">${positive ? 'Positive' : 'Negative'}</small>
+                        <small class="text-muted">2 days ago</small>
+                    </div>
+                    <p class="mb-2 small">"${escapeHtml(commentText)}"</p>
+                    <span class="badge bg-light text-dark small">${escapeHtml(supporting)}</span>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // initial render of recent comments (server-provided)
+        renderRecentComments('all');
 
         const drawWordCloud = (words) => {
             if (WordCloud.isSupported) {
@@ -226,8 +250,6 @@
                 const options = {
                     list: words,
                     gridSize: 12,
-
-
                     fontFamily: "Segoe UI",
                     color: function (word, weight, fontSize, distance, theta) {
                         const colors = ["#800080", "#000000", "#FF0000"]; // purple, black, red
@@ -281,32 +303,49 @@
                 });
 
                 if (response.ok) {
-                    debugger;
                     const data = await response.json();
 
-                    if (data.wordCloud.length === 0) {
-                        alert('No data found for the selected filters.');
-                        return;
+                    // update KPIs (use both jQuery and DOM to be resilient)
+                    const total = data.totalComments ?? data.TotalComments ?? 0;
+                    const positive = data.positive ?? data.Positive ?? 0;
+                    const negative = data.negative ?? data.Negative ?? 0;
+                    const wordCloud = data.wordCloud ?? data.WordCloud ?? [];
+
+                    document.getElementById('TotalComments').textContent = total;
+                    const posEl = document.getElementById('Positive');
+                    if (posEl) posEl.textContent = positive;
+                    const negEl = document.getElementById('Negative');
+                    if (negEl) negEl.textContent = negative;
+
+                    // update in-memory recentComments and re-render comment cards
+                    recentComments = data.recentComments ?? data.RecentComments ?? [];
+
+                    // determine which radio is selected
+                    const selected = document.querySelector('input[name="commentFilter"]:checked')?.id || 'filterAll';
+                    const currentFilter = selected === 'filterPositive' ? 'positive' : selected === 'filterNegative' ? 'negative' : 'all';
+                    renderRecentComments(currentFilter);
+
+                    // update word cloud
+                    if (!Array.isArray(wordCloud) || wordCloud.length === 0) {
+                        // no word cloud entries
+                        currentWords = [];
+                        const canvas = document.getElementById('word-cloud-canvas');
+                        if (canvas) {
+                            canvas.width = 900; canvas.height = 500;
+                            const ctx = canvas.getContext('2d');
+                            ctx.clearRect(0,0,canvas.width, canvas.height);
+                        }
+                    } else {
+                        currentWords = wordCloud;
+                        // Reset the canvas completely
+                        const canvas = document.getElementById('word-cloud-canvas');
+                        const ctx = canvas.getContext('2d');
+                        canvas.width = 900;
+                        canvas.height = 500;
+                        ctx.fillStyle = "#ffffff";
+                        ctx.fillRect(0, 0, canvas.width, canvas.height);
+                        drawWordCloud(currentWords);
                     }
-                    $("#TotalComments").text(data.totalComments);
-                    $("#Positive").text(data.positive);
-                    $("#Negative").text(data.negative);
-                    currentWords = data.wordCloud;
-
-                    // Reset the canvas completely
-                    const canvas = document.getElementById('word-cloud-canvas');
-                    const ctx = canvas.getContext('2d');
-
-                    // Reset canvas size to force re-render
-                    canvas.width = 900;
-                    canvas.height = 500;
-
-                    // Clear the canvas
-                    ctx.fillStyle = "#ffffff";
-                    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-                    // Redraw the word cloud with filtered data
-                    drawWordCloud(currentWords);
                 } else {
                     console.error('Failed to fetch filtered data');
                     alert('Failed to apply filters. Please try again.');
@@ -320,12 +359,12 @@
         // Attach event listener to apply filters button
         document.getElementById('applyFiltersBtn').addEventListener('click', applyFilters);
 
+        // radio buttons: filter currently rendered comments client-side
+        document.getElementById('filterAll').addEventListener('change', () => renderRecentComments('all'));
+        document.getElementById('filterPositive').addEventListener('change', () => renderRecentComments('positive'));
+        document.getElementById('filterNegative').addEventListener('change', () => renderRecentComments('negative'));
+
         // Draw initial word cloud
         drawWordCloud(currentWords);
-
-
-
-
-
     </script>
 }

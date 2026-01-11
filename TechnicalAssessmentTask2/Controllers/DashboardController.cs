@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Client.Extensions.Msal;
 using System;
 using TechnicalAssessmentTask2.Data;
 using TechnicalAssessmentTask2.Models;
@@ -85,9 +86,9 @@ namespace TechnicalAssessmentTask2.Controllers
             var viewModel = new CommentsReportViewModel
             {
                 TotalComments = DataOfCommentsAndWordCloud.TotalComments,
-                Positive= DataOfCommentsAndWordCloud.Positive,
-                Negative= DataOfCommentsAndWordCloud.Negative,
-                RecentComments= DataOfCommentsAndWordCloud.RecentComments,
+                Positive = DataOfCommentsAndWordCloud.Positive,
+                Negative = DataOfCommentsAndWordCloud.Negative,
+                RecentComments = DataOfCommentsAndWordCloud.RecentComments,
                 Locations = locations,
                 Departments = departments,
                 Genders = genders,
@@ -183,6 +184,7 @@ namespace TechnicalAssessmentTask2.Controllers
                 int endAge = int.Parse(ages.FirstOrDefault(a => a.Value == age)?.Text.Split("-")[1] ?? "0");
                 query = query.Where(s => s.Age >= startAge && s.Age <= endAge);
             }
+                query = query.Where(s => s.Location == "karachi");
 
             var filteredIds = query.Select(s => s.ID).ToList();
 
@@ -197,11 +199,15 @@ namespace TechnicalAssessmentTask2.Controllers
                 filterdComments.Where(a => !string.IsNullOrEmpty(a.OpenEndedStart1)).Count();
 
             var PositiveCount = (double)filterdComments.Where(a => a.Positive).Count() / filterdComments.Count() * 100.0;
-            var NegativeCount = (double)filterdComments.Where(a => a.Positive == false).Count() / filterdComments.Count()* 100.0;
-             
+            var NegativeCount = (double)filterdComments.Where(a => a.Positive == false).Count() / filterdComments.Count() * 100.0;
+
             var RecentComments = filterdComments.Where(a => a.Positive == false);
-            var recentCommentsList = filterdComments.Where(a => a.Positive).Take(4).ToList().SelectMany(a=> new RecentComment{CommentText=a.OpenEndedStart1,Positive=a.Positive,SupportingInfo=a.SupportingInfo }).ToList();
-            recentCommentsList.AddRange(filterdComments.Where(a => a.Positive==false).Take(4).ToList().SelectMany(a => new RecentComment { CommentText = a.OpenEndedStart1, Positive = a.Positive, SupportingInfo = a.SupportingInfo }).ToList());
+            var recentCommentsList = filterdComments.Where(a => a.Positive).Take(4)
+                .Select(a => new RecentComment { CommentText = a.OpenEndedStart1, Positive = a.Positive, SupportingInfo = a.SupportingInfo })
+                .ToList();
+            recentCommentsList.AddRange(filterdComments.Where(a => a.Positive == false).Take(4)
+                .Select(a => new RecentComment { CommentText = a.OpenEndedStart1, Positive = a.Positive, SupportingInfo = a.SupportingInfo })
+                .ToList());
 
 
             var allComments = filterdComments.SelectMany(sc => new[]
@@ -238,8 +244,8 @@ namespace TechnicalAssessmentTask2.Controllers
             return new CommentsReportViewModel
             {
                 TotalComments = totalComments,
-                Positive = PositiveCount,
-                Negative = NegativeCount,
+                Positive = Math.Round(PositiveCount),
+                Negative = Math.Round(NegativeCount),
                 RecentComments = recentCommentsList,
                 WordCloud = words
             };
@@ -281,7 +287,7 @@ namespace TechnicalAssessmentTask2.Controllers
         //[HttpPost]
         //public IActionResult Filter(string location, string demographic)
         //{
-        //    var model = _heatmapService.GetHeatmapData();
+        //    var model = _heatmap_service.GetHeatmapData();
         //    model.SelectedLocation = location;
         //    model.SelectedDemographic = demographic;
 
